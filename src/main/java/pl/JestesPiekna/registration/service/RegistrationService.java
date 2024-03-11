@@ -107,8 +107,8 @@ public class RegistrationService {
             throw new InvalidEmailException("please enter a valid email address");
         }
 
-        if (registerUserDto.getFirstName().length() < 1) {
-            throw new InvalidFirstNameLenghtException("First name must have at least 1 character");
+        if (registerUserDto.getFirstName() != null && registerUserDto.getFirstName().length() < 1) {
+            throw  new InvalidFirstNameLenghtException("First name must have at least 1 character");
         }
 
     }
