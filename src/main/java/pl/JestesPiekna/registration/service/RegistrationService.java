@@ -2,10 +2,10 @@ package pl.JestesPiekna.registration.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
+import pl.JestesPiekna.activation.activationService.TokenService;
 import pl.JestesPiekna.authorization.dto.AuthoritiesDto;
 import pl.JestesPiekna.authorization.mapper.AuthoritiesMapper;
 import pl.JestesPiekna.authorization.repository.AuthoritiesRepository;
@@ -15,6 +15,8 @@ import pl.JestesPiekna.model.UserProfile;
 import pl.JestesPiekna.registration.dto.RegisterUserDto;
 import pl.JestesPiekna.registration.exception.*;
 import pl.JestesPiekna.registration.repository.UserRepository;
+
+import java.util.Date;
 
 @Service
 public class RegistrationService {
@@ -43,6 +45,10 @@ public class RegistrationService {
     @Transactional
     public void registerUser(RegisterUserDto registerUserDto) {
 
+        checkUserUniqueness(registerUserDto);
+
+        validateRegistrationData(registerUserDto);
+
 
         String hashedPassword = bCryptPasswordEncoder.encode(registerUserDto.getPassword());
 
@@ -51,6 +57,11 @@ public class RegistrationService {
         user.setPassword(hashedPassword);
         user.setEmail(registerUserDto.getEmail());
         user.setEnabled(1);
+
+        String activationToken = TokenService.generateActivationToken();
+        Date expirationDate = TokenService.calculateTokenExpirationDate();
+        user.setActivationToken(activationToken);
+        user.setTokenExpirationDate(expirationDate);
 
         UserProfile userProfile = new UserProfile();
         userProfile.setFirstName(registerUserDto.getFirstName());
