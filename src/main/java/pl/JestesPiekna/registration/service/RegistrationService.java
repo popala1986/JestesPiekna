@@ -1,7 +1,10 @@
 package pl.JestesPiekna.registration.service;
 
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 import pl.JestesPiekna.authorization.dto.AuthoritiesDto;
 import pl.JestesPiekna.authorization.mapper.AuthoritiesMapper;
@@ -10,25 +13,33 @@ import pl.JestesPiekna.model.Authorities;
 import pl.JestesPiekna.model.User;
 import pl.JestesPiekna.model.UserProfile;
 import pl.JestesPiekna.registration.dto.RegisterUserDto;
+import pl.JestesPiekna.registration.exception.EmailAlreadyExistsException;
+import pl.JestesPiekna.registration.exception.UserAlreadyExistsException;
 import pl.JestesPiekna.registration.repository.UserRepository;
 
 @Service
 public class RegistrationService {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserDetailsManager userDetailsManager;
 
-    private final AuthoritiesMapper authoritiesMapper;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private final AuthoritiesRepository authoritiesRepository;
 
     private final UserRepository userRepository;
 
-    public RegistrationService(BCryptPasswordEncoder bCryptPasswordEncoder, AuthoritiesMapper authoritiesMapper, AuthoritiesRepository authoritiesRepository, UserRepository userRepository) {
+
+
+
+
+    @Autowired
+    public RegistrationService(UserDetailsManager userDetailsManager, BCryptPasswordEncoder bCryptPasswordEncoder, AuthoritiesRepository authoritiesRepository, UserRepository userRepository) {
+        this.userDetailsManager = userDetailsManager;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.authoritiesMapper = authoritiesMapper;
         this.authoritiesRepository = authoritiesRepository;
         this.userRepository = userRepository;
     }
+
 
     @Transactional
     public void registerUser(RegisterUserDto registerUserDto) {
@@ -61,6 +72,16 @@ public class RegistrationService {
         userRepository.save(user);
 
 
+    }
+
+    private void checkUserUniqueness(RegisterUserDto registerUserDto) {
+        if (userDetailsManager.userExists(registerUserDto.getUsername())) {
+            throw new UserAlreadyExistsException("This username is already taken");
+        }
+
+        if (userRepository.findByEmail(registerUserDto.getEmail()) != null) {
+            throw new EmailAlreadyExistsException("This email is already taken");
+        }
     }
 
 }
