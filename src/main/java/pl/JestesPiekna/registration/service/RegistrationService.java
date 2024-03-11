@@ -13,8 +13,7 @@ import pl.JestesPiekna.model.Authorities;
 import pl.JestesPiekna.model.User;
 import pl.JestesPiekna.model.UserProfile;
 import pl.JestesPiekna.registration.dto.RegisterUserDto;
-import pl.JestesPiekna.registration.exception.EmailAlreadyExistsException;
-import pl.JestesPiekna.registration.exception.UserAlreadyExistsException;
+import pl.JestesPiekna.registration.exception.*;
 import pl.JestesPiekna.registration.repository.UserRepository;
 
 @Service
@@ -82,6 +81,25 @@ public class RegistrationService {
         if (userRepository.findByEmail(registerUserDto.getEmail()) != null) {
             throw new EmailAlreadyExistsException("This email is already taken ");
         }
+    }
+
+    private void validateRegistrationData(RegisterUserDto registerUserDto) {
+        if (registerUserDto.getUsername().length() < 5) {
+            throw new InvalidUsernameException("The username must have at least 5 character");
+        }
+
+        if (registerUserDto.getPassword().length() < 8 || registerUserDto.getPassword().length() > 20) {
+            throw new InvalidPasswordException("Password must be between 8 and 20 characters");
+        }
+
+        if (!registerUserDto.getEmail().matches("^[\\w.-]+@[\\w.-]+\\.[a-z]{2,}$")) {
+            throw new InvalidEmailException("please enter a valid email address");
+        }
+
+        if (registerUserDto.getFirstName().length() < 1) {
+            throw new InvalidFirstNameLenghtException("First name must have at least 1 character");
+        }
+
     }
 
 }
