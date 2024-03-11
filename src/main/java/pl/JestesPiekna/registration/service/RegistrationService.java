@@ -80,7 +80,7 @@ public class RegistrationService {
         }
 
         if (userRepository.findByEmail(registerUserDto.getEmail()) != null) {
-            throw new EmailAlreadyExistsException("This email is already taken");
+            throw new EmailAlreadyExistsException("This email is already taken ");
         }
     }
 
