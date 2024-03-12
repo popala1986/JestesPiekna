@@ -52,6 +52,9 @@ public class RegistrationController {
         }catch (InvalidLastNameLenghtException ex) {
             bindingResult.rejectValue("lastName", "error.registerDto", ex.getMessage());
 
+        } catch (InvalidPhoneNumberLenghtException ex) {
+            bindingResult.rejectValue("phone","error.registerDto", ex.getMessage());
+
         } catch (UserAlreadyExistsException ex) {
             bindingResult.rejectValue("username", "error.registerUserDto", ex.getMessage());
             model.addAttribute("userExistsError", "This username is already taken");
@@ -59,6 +62,10 @@ public class RegistrationController {
         } catch (EmailAlreadyExistsException ex) {
             bindingResult.rejectValue("email", "error.registerUserDto", ex.getMessage());
             model.addAttribute("emailExistsError", "This email is already taken");
+
+        } catch (PhoneNumberAlreadyExistsException ex) {
+            bindingResult.rejectValue("phone", "error.registerUserDto", ex.getMessage());
+            model.addAttribute("phoneExistsError", "This phone number is already use");
         }
 
         return "registrationForm";
