@@ -14,6 +14,7 @@ import pl.JestesPiekna.model.User;
 import pl.JestesPiekna.model.UserProfile;
 import pl.JestesPiekna.registration.dto.RegisterUserDto;
 import pl.JestesPiekna.registration.exception.*;
+import pl.JestesPiekna.registration.repository.UserProfileRepository;
 import pl.JestesPiekna.registration.repository.UserRepository;
 
 import java.util.Date;
@@ -29,16 +30,19 @@ public class RegistrationService {
 
     private final UserRepository userRepository;
 
+    private final UserProfileRepository userProfileRepository;
+
 
 
 
 
     @Autowired
-    public RegistrationService(UserDetailsManager userDetailsManager, BCryptPasswordEncoder bCryptPasswordEncoder, AuthoritiesRepository authoritiesRepository, UserRepository userRepository) {
+    public RegistrationService(UserDetailsManager userDetailsManager, BCryptPasswordEncoder bCryptPasswordEncoder, AuthoritiesRepository authoritiesRepository, UserRepository userRepository, UserProfileRepository userProfileRepository) {
         this.userDetailsManager = userDetailsManager;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.authoritiesRepository = authoritiesRepository;
         this.userRepository = userRepository;
+        this.userProfileRepository = userProfileRepository;
     }
 
 
@@ -92,6 +96,10 @@ public class RegistrationService {
         if (userRepository.findByEmail(registerUserDto.getEmail()) != null) {
             throw new EmailAlreadyExistsException("This email is already taken ");
         }
+
+        if (userProfileRepository.findByPhone(registerUserDto.getPhone()) != null) {
+            throw new PhoneNumberAlreadyExistsException("This phone number is already use");
+        }
     }
 
     private void validateRegistrationData(RegisterUserDto registerUserDto) {
@@ -113,6 +121,10 @@ public class RegistrationService {
 
         if (registerUserDto.getLastName() != null && registerUserDto.getLastName().length() < 1) {
             throw new InvalidLastNameLenghtException("Last name must have at least 1 character");
+        }
+
+        if (registerUserDto.getPhone().length() != 9) {
+            throw new InvalidPhoneNumberLenghtException("The phone number can only contain 9 digits");
         }
 
     }
