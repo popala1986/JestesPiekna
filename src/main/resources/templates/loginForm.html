@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="/login.css">
+</head>
+<body>
+<div class="login-container">
+  <h1>Login</h1>
+
+  <form th:action="@{/login}" th:object="${loginDto}" method="post">
+
+    <!-- General Form Errors -->
+
+
+    <!-- Username Field -->
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" th:field="*{username}" required placeholder="Enter username" class="name" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
+    </div>
+
+    <!-- Password Field -->
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" th:field="*{password}" required placeholder="Enter password" class="password" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+      <button type="submit">Login</button>
+    </div>
+
+  </form>
+
+  <div th:if="${error}">
+    <p style="color: red;" th:text="${error}"></p>
+  </div>
+
+</div>
+</body>
+</html>
