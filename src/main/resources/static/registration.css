@@ -12,19 +12,27 @@ body {
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
-    text-align: center; /* Dodaj tę linijkę */
+    text-align: center;
 }
 
-.container {
+.registration-container {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center; /* Dodaj tę linijkę */
+    width: 600px;
+    text-align: center; /* Wyśrodkowanie tytułu */
+}
+
+.form-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-section div {
+    width: 48%; /* Szerokość pola formularza */
+    margin-bottom: 10px;
 }
 
 label {
@@ -32,15 +40,16 @@ label {
     font-weight: bold;
     margin-bottom: 8px;
     text-align: left;
+    margin-right: 5px; /* Dodano margines po prawej stronie dla tytułów */
 }
 
 input {
-    width: 100%;
+    width: calc(100% - 10px); /* Dodałem margines po lewej i prawej stronie dla inputów */
     padding: 10px;
-    margin-bottom: 16px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-bottom: 10px;
 }
 
 .error {
@@ -67,10 +76,4 @@ button:hover {
     margin-top: 10px;
     font-size: 14px;
     text-align: left;
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
 }
