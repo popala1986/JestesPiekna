@@ -111,6 +111,10 @@ public class RegistrationService {
             throw  new InvalidFirstNameLenghtException("First name must have at least 1 character");
         }
 
+        if (registerUserDto.getLastName() != null && registerUserDto.getLastName().length() < 1) {
+            throw new InvalidLastNameLenghtException("Last name must have at least 1 character");
+        }
+
     }
 
 }
