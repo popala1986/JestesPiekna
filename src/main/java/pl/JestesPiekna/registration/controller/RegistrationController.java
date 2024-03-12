@@ -49,6 +49,9 @@ public class RegistrationController {
         } catch (InvalidFirstNameLenghtException ex) {
             bindingResult.rejectValue("firstName", "error.registerDto", ex.getMessage());
 
+        }catch (InvalidLastNameLenghtException ex) {
+            bindingResult.rejectValue("lastName", "error.registerDto", ex.getMessage());
+
         } catch (UserAlreadyExistsException ex) {
             bindingResult.rejectValue("username", "error.registerUserDto", ex.getMessage());
             model.addAttribute("userExistsError", "This username is already taken");
