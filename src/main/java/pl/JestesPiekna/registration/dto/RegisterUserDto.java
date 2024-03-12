@@ -27,9 +27,9 @@ public class RegisterUserDto {
     @Pattern(regexp = "^[a-zA-ZłŁąĄęĘśŚżŻźŹ]+$", message = "The name must contain only letters")
     private String lastName;
     @NotNull(message = "Phone number cannot be null")
+    @NotBlank(message = "phone number cannot be blank")
     @Positive(message = "Phone number must be a positive number")
-    @Pattern(regexp = "^[0-9]{9}", message = "The phone must contain min and max\n" +
-            "9 digits ")
+    @Size(min = 9, max = 9, message = "The phone number can only contain 9 digits ")
     private String phone;
     @NotBlank
     private String healthCondition;
