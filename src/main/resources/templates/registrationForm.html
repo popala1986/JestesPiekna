@@ -54,15 +54,22 @@
       <span th:if="${#fields.hasErrors('healthCondition')}" th:errors="*{healthCondition}" class="error"></span>
     </div>
 
-
     <div>
       <button type="submit">Register</button>
     </div>
   </form>
 
+  <div>
+    <a th:href="@{/YouAreBeautiful}">Strona główna</a>
+  </div>
+
   <div th:if="${error}">
     <p style="color: red;" th:text="${error}"></p>
   </div>
 </div>
+
+
+
+
 </body>
 </html>
