@@ -31,26 +31,16 @@ public class RegisterUserDto {
     @Pattern(regexp = "^[0-9]{9}", message = "The phone must contain min and max\n" +
             "9 digits ")
     private String phone;
-
-    @NotNull(message = "Enabled status is mandatory")
-    private Integer enabled;
-
-    private String activationToken;
-    private Date tokenExpirationDate;
-
     @NotBlank
     private String healthCondition;
 
-    public RegisterUserDto(String username, String password, String email, String firstName, String lastName, String phone, Integer enabled, String activationToken, Date tokenExpirationDate, String healthCondition) {
+    public RegisterUserDto(String username, String password, String email, String firstName, String lastName, String phone, String healthCondition) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
-        this.enabled = enabled;
-        this.activationToken = activationToken;
-        this.tokenExpirationDate = tokenExpirationDate;
         this.healthCondition = healthCondition;
     }
 
@@ -103,30 +93,6 @@ public class RegisterUserDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Integer getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Integer enabled) {
-        this.enabled = enabled;
-    }
-
-    public String getActivationToken() {
-        return activationToken;
-    }
-
-    public void setActivationToken(String activationToken) {
-        this.activationToken = activationToken;
-    }
-
-    public Date getTokenExpirationDate() {
-        return tokenExpirationDate;
-    }
-
-    public void setTokenExpirationDate(Date tokenExpirationDate) {
-        this.tokenExpirationDate = tokenExpirationDate;
     }
 
     public String getHealthCondition() {
