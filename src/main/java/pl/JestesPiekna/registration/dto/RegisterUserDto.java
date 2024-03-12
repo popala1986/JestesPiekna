@@ -21,7 +21,9 @@ public class RegisterUserDto {
             "The name must have at least 1 character")
     @Pattern(regexp = "^[a-zA-ZłŁąĄęĘśŚżŻźŹ]+$", message = "The name must contain only letters")
     private String firstName;
-    @NotBlank(message = "lastName cannot be blank")
+    @NotBlank(message = "firstName cannot be blank")
+    @Size(min = 1, message = "\n" +
+            "The name must have at least 1 character")
     @Pattern(regexp = "^[a-zA-ZłŁąĄęĘśŚżŻźŹ]+$", message = "The name must contain only letters")
     private String lastName;
     @NotNull(message = "Phone number cannot be null")
