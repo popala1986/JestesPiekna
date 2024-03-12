@@ -9,9 +9,7 @@ public class LoginDto {
     @NotBlank(message = "username is mandatory")
     private String username;
 
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.* ).*", message = "Password must contain at least one lowercase letter, " +
-            "one uppercase letter, one digit, and no white spaces")
-    @Size(min = 8, max = 32, message = "Password must be between 8 and 20 characters")
+    @NotBlank(message = "username is mandatory")
     private String password;
 
     public String getUsername() {
