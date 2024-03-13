@@ -56,6 +56,12 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/registration").permitAll()
                         .requestMatchers(HttpMethod.GET, "/YouAreBeautiful").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/upload").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/uploadPhoto").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/static/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/upload").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/uploadPhoto").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/static/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/securedMainPage").authenticated()
                         .anyRequest().permitAll())
                 .logout(logoutConfigurer -> logoutConfigurer
