@@ -1,4 +1,26 @@
 
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Upload Photo</title>-->
+<!--    <link rel="stylesheet" type="text/css" href="/uploadPhoto.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Upload Photo</h1>-->
+<!--<form id="uploadForm" th:action="@{/photo/upload}" method="post" enctype="multipart/form-data">-->
+<!--    &lt;!&ndash; Dodaj pole do przechowywania tokena CSRF &ndash;&gt;-->
+<!--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">-->
+
+<!--    <input type="file" name="photos" id="photos" multiple>-->
+<!--    <button type="submit">Upload</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -11,7 +33,7 @@
 <body>
 <h1>Upload Photo</h1>
 <form id="uploadForm" th:action="@{/photo/upload}" method="post" enctype="multipart/form-data">
-    <!-- Dodaj pole do przechowywania tokena CSRF -->
+    <!-- Add field for storing CSRF token -->
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
     <input type="file" name="photos" id="photos" multiple>
@@ -19,5 +41,3 @@
 </form>
 </body>
 </html>
-
-
