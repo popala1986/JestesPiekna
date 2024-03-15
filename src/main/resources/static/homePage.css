@@ -40,7 +40,7 @@ header {
 .NAME {
     text-align: center; /* Wyśrodkowanie tekstu */
     flex-grow: 1; /* Rozciągnięcie NAME, aby zajmowało dostępną przestrzeń */
-    margin-left: 18%; /* Przesunięcie NAME na prawo */
+    margin-left: 19%; /* Przesunięcie NAME na prawo */
 }
 
 .blinking-text {
@@ -109,11 +109,14 @@ main {
 }
 
 .LOGO img {
-    max-width: 200px;
+   width: 250px;
+      height: 250px;
 }
 
 .OWNER {
     text-align: center;
+    font-family: 'Arial', sans-serif;
+
 }
 
 .slide-in-text {
@@ -162,8 +165,8 @@ footer {
 }
 
 .S4 .photo-gallery img {
-    width: 200px; /* Ustawienie stałej szerokości */
-    height: 200px; /* Ustawienie stałej wysokości */
+    width: 350px;
+    height: 350px;
 }
 
 
@@ -210,7 +213,7 @@ footer {
 }
 
 .btnMenu2 {
-    /* Dodaj stylizację dla nowego przycisku */
+
     background: none;
     border: none;
     font-size: 24px;
@@ -218,13 +221,13 @@ footer {
     cursor: pointer;
 }
 
-/* Dodaj stylizację dla rozwijanej zawartości dla nowego przycisku */
+
 .menuContent2 {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 100%;
-    right: 0; /* Umieść menu na prawo */
+    right: 0; /
     background-color: #333;
     border: 1px solid #fff;
     width: 150px;
