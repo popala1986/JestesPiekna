@@ -20,13 +20,15 @@ public class HomePageController {
 
     @GetMapping("/YouAreBeautiful")
     public String showHomePage(Model model) {
-        List<PhotoGallery> allPhotos = photoGalleryService.getAllPhotos();
-        model.addAttribute("allPhotos", allPhotos);
+        List<PhotoGallery> latestPhotos  = photoGalleryService.getLatestPhotos();
+        model.addAttribute("latestPhotos", latestPhotos);
         return "homePageAll";
     }
 
-    @GetMapping("/securedMainPage")
-    public String showMainPage() {
+    @GetMapping("/homePage")
+    public String showMainPage(Model model) {
+        List<PhotoGallery> latestPhotos  = photoGalleryService.getLatestPhotos();
+        model.addAttribute("latestPhotos", latestPhotos);
         return "homePage";
     }
 }

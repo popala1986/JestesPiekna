@@ -12,15 +12,22 @@ import pl.JestesPiekna.login.dto.LoginDto;
 import pl.JestesPiekna.login.exception.InvalidUsernameOrPasswordException;
 import pl.JestesPiekna.login.exception.PasswordIncorrectException;
 import pl.JestesPiekna.login.service.LoginService;
+import pl.JestesPiekna.model.PhotoGallery;
+import pl.JestesPiekna.photoGallery.service.PhotoGalleryService;
+
+import java.util.List;
 
 @Controller
 public class LoginController {
 
     private final LoginService loginService;
 
+    private final PhotoGalleryService photoGalleryService;
 
-    public LoginController(LoginService loginService) {
+
+    public LoginController(LoginService loginService, PhotoGalleryService photoGalleryService) {
         this.loginService = loginService;
+        this.photoGalleryService = photoGalleryService;
     }
 
     @GetMapping("/login")
@@ -42,6 +49,8 @@ public class LoginController {
 
         try {
             if (loginService.isPasswordCorrect(loginDto.getUsername(), loginDto.getPassword())) {
+                List<PhotoGallery> latestPhotos  = photoGalleryService.getLatestPhotos();
+                model.addAttribute("latestPhotos", latestPhotos);
                 return "homePage";
             } else {
                 throw new PasswordIncorrectException("Invalid username or password");

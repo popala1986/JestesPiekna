@@ -5,6 +5,8 @@ import pl.JestesPiekna.model.PhotoGallery;
 import pl.JestesPiekna.photoGallery.repository.PhotoGalleryRepository;
 
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,8 +18,6 @@ public class PhotoGalleryService {
         this.photoGalleryRepository = photoGalleryRepository;
     }
 
-
-
     public void savePhotos(PhotoGallery photoGallery) {
         photoGalleryRepository.save(photoGallery);
     }
@@ -28,6 +28,10 @@ public class PhotoGalleryService {
 
 
     public List<PhotoGallery> getLatestPhotos() {
-        return photoGalleryRepository.findTop3ByOrderByIdDesc();
+        List<PhotoGallery> latestPhotos = photoGalleryRepository.findTop3ByOrderByIdDesc();
+        if (latestPhotos.size() > 3) {
+            latestPhotos = latestPhotos.subList(0, 3);
+        }
+        return latestPhotos;
     }
 }

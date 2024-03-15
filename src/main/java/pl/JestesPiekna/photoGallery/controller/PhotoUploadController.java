@@ -29,11 +29,6 @@ public class PhotoUploadController {
         return "uploadPhoto";
     }
 
-    @GetMapping("/success")
-    public String showUploadSuccessForm() {
-        return "upload-success";
-    }
-
     @PostMapping("/photo/upload")
     public String uploadPhotos(@RequestParam("photos") MultipartFile[] files, Model model) {
         List<byte[]> uploadedPhotos = new ArrayList<>();
@@ -55,6 +50,7 @@ public class PhotoUploadController {
         }
 
 
-        return "redirect:/YouAreBeautiful";
+        return "redirect:/uploadForm";
     }
+
 }
