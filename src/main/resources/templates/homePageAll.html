@@ -6,7 +6,7 @@
     <title>You Are Beautiful</title>
     <link rel="stylesheet" href="./CSS/reset.css">
     <link rel="stylesheet" href="./CSS/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/homePage.css">
+    <link rel="stylesheet" type="text/css" href="/homePageAll.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -15,29 +15,33 @@
 
     <header>
 
-
-
         <div class="NAME">
             <p class="blinking-text">Jesteś Piękna</p>
         </div>
         <nav>
             <ul>
-                <li><a href="#">About</a></li>
                 <li><a href="#">Portfolio</a></li>
                 <li><a href="#">Contact</a></li>
+                <li><a th:href="@{/galleryAll}">Gallery</a></li>
+                <li><a th:href="@{/registration}">Register</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <div class="SECTION">
+
             <section class="S1">
+
                 <div class="LOGO">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJdcg1hLF_x5-2R7TQ2RQA0ogMLgvN7u4WCg&usqp=CAU" alt="Placeholder">
                 </div>
+
                 <div class="OWNER">
                     <h1 class="slide-in-text">JUSTYNA OPALA</h1>
                 </div>
+
             </section>
 
             <section class="S3">
@@ -46,12 +50,14 @@
             </section>
 
             <section class="S4">
-                <h2>MOJE PRACE</h2>
+                <h2> <a th:href="@{/galleryAll}">MOJE PRACE</a></h2>
+
                 <div class="photo-gallery">
-                    <div th:each="photo : ${allPhotos}">
+                    <div th:each="photo : ${latestPhotos}">
                         <img th:src="${'/photos/' + photo.id}" alt="Zdjęcie">
                     </div>
                 </div>
+
             </section>
 
         </div>

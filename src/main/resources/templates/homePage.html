@@ -26,17 +26,14 @@
 
     </div>
 
-
-
-
     <div class="NAME">
       <p class="blinking-text">Jesteś Piękna</p>
     </div>
     <nav>
       <ul>
-        <li><a href="#">About</a></li>
         <li><a href="#">Portfolio</a></li>
         <li><a href="#">Contact</a></li>
+        <li><a th:href="@{/gallery}">Gallery</a></li>
       </ul>
     </nav>
   </header>
@@ -58,9 +55,9 @@
       </section>
 
       <section class="S4">
-        <h2>MOJE PRACE</h2>
+        <h2> <a th:href="@{/gallery}">MOJE PRACE</a></h2>
         <div class="photo-gallery">
-          <div th:each="photo : ${allPhotos}">
+          <div th:each="photo : ${latestPhotos}">
             <img th:src="${'/photos/' + photo.id}" alt="Zdjęcie">
           </div>
         </div>
