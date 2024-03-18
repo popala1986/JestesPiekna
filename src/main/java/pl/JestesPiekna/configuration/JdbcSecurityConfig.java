@@ -15,6 +15,7 @@ import pl.JestesPiekna.model.User;
 import pl.JestesPiekna.model.UserProfile;
 import pl.JestesPiekna.registration.repository.UserRepository;
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
@@ -92,8 +93,14 @@ public class JdbcSecurityConfig {
 
             userRepository.save(adminEntity);
 
+
+
+
         }
 
         return userDetailsManager;
     }
+
+
+
 }

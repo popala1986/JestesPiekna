@@ -1,6 +1,5 @@
 package pl.JestesPiekna.login.controller;
 
-
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +30,11 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm(Model model){
+    public String showLoginForm(Model model) {
         model.addAttribute("loginDto", new LoginDto());
         return "loginForm";
     }
+
 
     @PostMapping("/login")
     public String logIn(
@@ -49,7 +49,7 @@ public class LoginController {
 
         try {
             if (loginService.isPasswordCorrect(loginDto.getUsername(), loginDto.getPassword())) {
-                List<PhotoGallery> latestPhotos  = photoGalleryService.getLatestPhotos();
+                List<PhotoGallery> latestPhotos = photoGalleryService.getLatestPhotos();
                 model.addAttribute("latestPhotos", latestPhotos);
                 return "homePage";
             } else {
@@ -64,5 +64,5 @@ public class LoginController {
         }
         return "loginForm";
     }
-
 }
+

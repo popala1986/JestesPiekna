@@ -1,4 +1,10 @@
 package pl.JestesPiekna.homePage.controller;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +25,16 @@ public class HomePageController {
 
 
     @GetMapping("/YouAreBeautiful")
-    public String showHomePage(Model model) {
+    public String showHomePageAll(Model model) {
         List<PhotoGallery> latestPhotos  = photoGalleryService.getLatestPhotos();
         model.addAttribute("latestPhotos", latestPhotos);
         return "homePageAll";
     }
 
+
+
     @GetMapping("/homePage")
-    public String showMainPage(Model model) {
+    public String showHomePage(Model model) {
         List<PhotoGallery> latestPhotos  = photoGalleryService.getLatestPhotos();
         model.addAttribute("latestPhotos", latestPhotos);
         return "homePage";
