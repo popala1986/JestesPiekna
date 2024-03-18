@@ -20,8 +20,7 @@
       <button class="btnMenu"><i class="fa fa-bars"></i></button>
 
       <div class="menuContent">
-        <a th:href="@{/client/addNewClient}">ADD NEW CLIENT TO DATABASE</a>
-        <a th:href="@{/client/listClient}">SHOW RESERVATION</a>
+        <a th:href="@{/client/addReservation}">Book your visit</a>
       </div>
 
     </div>
@@ -32,8 +31,9 @@
     <nav>
       <ul>
         <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a th:href="@{/contact}">Contact</a></li>
         <li><a th:href="@{/gallery}">Gallery</a></li>
+
       </ul>
     </nav>
   </header>
