@@ -73,10 +73,9 @@ public class RegistrationService {
         userProfile.setPhone(registerUserDto.getPhone());
         userProfile.setHealth_condition(registerUserDto.getHealthCondition());
 
-        AuthoritiesDto authoritiesDto = new AuthoritiesDto();
-        authoritiesDto.setUsername(registerUserDto.getUsername());
-        authoritiesDto.setAuthority("ROLE_USER");
-        Authorities authorities = AuthoritiesMapper.mapToAuthorities(authoritiesDto);
+        Authorities authorities = new Authorities();
+        authorities.setUsername(registerUserDto.getUsername());
+        authorities.setAuthority("ROLE_USER");
 
         user.setUserProfile(userProfile);
         userProfile.setUser(user);
