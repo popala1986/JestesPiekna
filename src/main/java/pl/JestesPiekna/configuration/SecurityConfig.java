@@ -62,7 +62,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/upload").permitAll()
                         .requestMatchers(HttpMethod.POST, "/uploadPhoto").permitAll()
                         .requestMatchers(HttpMethod.POST, "/static/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/securedMainPage").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/homePage").authenticated()
                         .anyRequest().permitAll())
                 .logout(logoutConfigurer -> logoutConfigurer
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -78,15 +78,5 @@ public class SecurityConfig {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-
-
     }
 }
-
-
-
-
-
-
-
-
