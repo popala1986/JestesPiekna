@@ -68,11 +68,11 @@ public class SecurityConfig {
                         .maximumSessions(1)
                         .maxSessionsPreventsLogin(false));
 
-         http
-                 .httpBasic(Customizer.withDefaults())
-                 .csrf(csrfConfigurer -> csrfConfigurer.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-                 .headers(headersConfigurer -> headersConfigurer
-                         .addHeaderWriter(new StaticHeadersWriter("Content-Security-Policy", "script-src 'self'")));
+        http
+                .httpBasic(Customizer.withDefaults())
+                .csrf(csrfConfigurer -> csrfConfigurer.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+                .headers(headersConfigurer -> headersConfigurer
+                        .addHeaderWriter(new StaticHeadersWriter("Content-Security-Policy", "script-src 'self'")));
 
         http
                 .authorizeHttpRequests((authorize) -> authorize
@@ -159,7 +159,3 @@ public class SecurityConfig {
     }
 
 }
-
-
-
-
