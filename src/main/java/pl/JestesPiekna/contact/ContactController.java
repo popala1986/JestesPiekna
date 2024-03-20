@@ -11,8 +11,4 @@ public class ContactController {
         return "contact";
     }
 
-    @GetMapping("/contactAll")
-    public String showContactAllForm() {
-        return "contactAll";
-    }
 }
