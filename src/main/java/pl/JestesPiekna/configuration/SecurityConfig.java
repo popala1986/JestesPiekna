@@ -64,10 +64,12 @@ public class SecurityConfig {
 
                 )
                 .httpBasic(Customizer.withDefaults())
-                .formLogin((formLogin) -> formLogin
+                .formLogin(formLogin -> formLogin
                         .loginPage("/login")
-                        .defaultSuccessUrl("/homePage")
-                );
+                        .defaultSuccessUrl("/homePage"))
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login"));
 
         return http.build();
     }
