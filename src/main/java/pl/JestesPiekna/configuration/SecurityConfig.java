@@ -89,7 +89,7 @@ public class SecurityConfig {
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID", "CSRF-TOKEN", "XSRF-TOKEN")
                         .clearAuthentication(true)
-                        .permitAll());
+                        .logoutSuccessUrl("/YouAreBeautiful"));
 
         return http.build();
     }

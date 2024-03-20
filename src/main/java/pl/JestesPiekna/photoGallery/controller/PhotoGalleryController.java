@@ -18,13 +18,6 @@ public class PhotoGalleryController {
         this.photoGalleryService = photoGalleryService;
     }
 
-    @GetMapping("/galleryAll")
-    public String showGalleryAll(Model model) {
-        List<PhotoGallery> AllPhotos  = photoGalleryService.getAllPhotos();
-        model.addAttribute("AllPhotos", AllPhotos);
-        return "galleryPageAll";
-    }
-
     @GetMapping("/gallery")
     public String showGallery(Model model) {
         List<PhotoGallery> AllPhotos  = photoGalleryService.getAllPhotos();
