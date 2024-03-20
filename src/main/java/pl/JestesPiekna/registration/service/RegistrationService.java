@@ -27,12 +27,15 @@ public class RegistrationService {
     private final UserRepository userRepository;
     private final UserProfileRepository userProfileRepository;
 
+    private final UserDetailsManager userDetailsManager;
+
     @Autowired
-    public RegistrationService(BCryptPasswordEncoder bCryptPasswordEncoder, AuthoritiesRepository authoritiesRepository, UserRepository userRepository, UserProfileRepository userProfileRepository) {
+    public RegistrationService(BCryptPasswordEncoder bCryptPasswordEncoder, AuthoritiesRepository authoritiesRepository, UserRepository userRepository, UserProfileRepository userProfileRepository, UserDetailsManager userDetailsManager) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.authoritiesRepository = authoritiesRepository;
         this.userRepository = userRepository;
         this.userProfileRepository = userProfileRepository;
+        this.userDetailsManager = userDetailsManager;
     }
 
 
@@ -78,7 +81,7 @@ public class RegistrationService {
     }
 
     private void checkUserUniqueness(RegisterUserDto registerUserDto) {
-        if (userRepository.findByUsername(registerUserDto.getUsername()) != null) {
+        if (userDetailsManager.userExists(registerUserDto.getUsername())) {
             throw new UserAlreadyExistsException("This username is already taken");
         }
 
