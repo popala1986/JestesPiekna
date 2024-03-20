@@ -31,8 +31,7 @@ public class HomePageController {
         return "homePageAll";
     }
 
-
-
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/homePage")
     public String showHomePage(Model model) {
         List<PhotoGallery> latestPhotos  = photoGalleryService.getLatestPhotos();
