@@ -39,6 +39,9 @@
                 <div th:if="${#authorization.expression('isAuthenticated()')}">
                     <a th:href="@{/homePage}">Strona główna</a>
                 </div>
+                <div th:unless="${#authorization.expression('isAuthenticated()')}">
+                    <a th:href="@{/YouAreBeautiful}">Strona główna</a>
+                </div>
 
 
 
@@ -50,7 +53,7 @@
     </main>
 
     <footer>
-        <a th:href="@{/homePage}">Strona główna</a>
+
     </footer>
 
 </div>

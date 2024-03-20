@@ -24,7 +24,7 @@
             <ul>
                 <li><a href="#">Portfolio</a></li>
                 <li><a th:href="@{/contactAll}">Contact</a></li>
-                <li><a th:href="@{/galleryAll}">Gallery</a></li>
+                <li><a th:href="@{/gallery}">Gallery</a></li>
                 <li><a th:href="@{/registration}">Register</a></li>
                 <li><a th:href="@{/login}">Login</a></li>
 
@@ -53,7 +53,7 @@
             </section>
 
             <section class="S4">
-                <h2> <a th:href="@{/galleryAll}">MOJE PRACE</a></h2>
+                <h2> <a th:href="@{/gallery}">MOJE PRACE</a></h2>
 
                 <div class="photo-gallery">
                     <div th:each="photo : ${latestPhotos}">
