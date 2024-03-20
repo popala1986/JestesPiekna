@@ -6,8 +6,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 import pl.JestesPiekna.activation.activationService.TokenService;
-import pl.JestesPiekna.authorization.dto.AuthoritiesDto;
-import pl.JestesPiekna.authorization.mapper.AuthoritiesMapper;
 import pl.JestesPiekna.authorization.repository.AuthoritiesRepository;
 import pl.JestesPiekna.model.Authorities;
 import pl.JestesPiekna.model.User;
@@ -22,23 +20,15 @@ import java.util.Date;
 @Service
 public class RegistrationService {
 
-    private final UserDetailsManager userDetailsManager;
+
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
     private final AuthoritiesRepository authoritiesRepository;
-
     private final UserRepository userRepository;
-
     private final UserProfileRepository userProfileRepository;
 
-
-
-
-
     @Autowired
-    public RegistrationService(UserDetailsManager userDetailsManager, BCryptPasswordEncoder bCryptPasswordEncoder, AuthoritiesRepository authoritiesRepository, UserRepository userRepository, UserProfileRepository userProfileRepository) {
-        this.userDetailsManager = userDetailsManager;
+    public RegistrationService(BCryptPasswordEncoder bCryptPasswordEncoder, AuthoritiesRepository authoritiesRepository, UserRepository userRepository, UserProfileRepository userProfileRepository) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.authoritiesRepository = authoritiesRepository;
         this.userRepository = userRepository;
@@ -88,7 +78,7 @@ public class RegistrationService {
     }
 
     private void checkUserUniqueness(RegisterUserDto registerUserDto) {
-        if (userDetailsManager.userExists(registerUserDto.getUsername())) {
+        if (userRepository.findByUsername(registerUserDto.getUsername()) != null) {
             throw new UserAlreadyExistsException("This username is already taken");
         }
 
