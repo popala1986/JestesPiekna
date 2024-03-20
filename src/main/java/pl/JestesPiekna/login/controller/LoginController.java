@@ -1,6 +1,7 @@
 package pl.JestesPiekna.login.controller;
 
 import jakarta.validation.Valid;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,12 +20,15 @@ import java.util.List;
 @Controller
 public class LoginController {
 
+    private final AuthenticationManager authenticationManager;
+
     private final LoginService loginService;
 
     private final PhotoGalleryService photoGalleryService;
 
 
-    public LoginController(LoginService loginService, PhotoGalleryService photoGalleryService) {
+    public LoginController(AuthenticationManager authenticationManager, LoginService loginService, PhotoGalleryService photoGalleryService) {
+        this.authenticationManager = authenticationManager;
         this.loginService = loginService;
         this.photoGalleryService = photoGalleryService;
     }

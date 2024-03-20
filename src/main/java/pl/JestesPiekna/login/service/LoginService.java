@@ -1,5 +1,6 @@
 package pl.JestesPiekna.login.service;
 
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,11 +14,14 @@ import java.util.Optional;
 @Service
 public class LoginService implements UserDetailsService {
 
+    private final AuthenticationManager authenticationManager;
+
     private final LoginRepository loginRepository;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public LoginService(LoginRepository loginRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public LoginService(AuthenticationManager authenticationManager, LoginRepository loginRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.authenticationManager = authenticationManager;
         this.loginRepository = loginRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
