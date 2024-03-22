@@ -1,4 +1,4 @@
-/* uploadPhoto.css */
+
 
 body {
     font-family: Arial, sans-serif;
@@ -9,8 +9,14 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 10px;
     color: #333;
+    background-color: #f0f0f0; /* Kolor tła */
+    padding: 10px; /* Odstęp wokół zawartości */
+    border-radius: 10px; /* Zaokrąglenie rogów */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Cień */
+    max-width: 300px; /* Maksymalna szerokość */
+    margin: 20px auto; /* Wyśrodkowanie na stronie */
 }
 
 form {
@@ -27,16 +33,48 @@ input[type="file"] {
     margin-bottom: 20px;
 }
 
+
+
+.back {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.back a {
+    color: #333;
+    text-decoration: underline;
+    text-decoration-color: blue;
+}
+
+
+
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+
 button[type="submit"] {
     display: block;
-    width: 100%;
-    padding: 10px;
+    width: 75%;
+    margin: 20px auto;
+    padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 button[type="submit"]:hover {
     background-color: #45a049;
