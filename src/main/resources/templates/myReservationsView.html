@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <title>Lista Rezerwacji</title>
 </head>
+
+
+
 <body>
+
+
 <h1>Lista Rezerwacji</h1>
 
 <p>Witaj, <span th:text="${firstName}"></span> <span th:text="${lastName}"></span>!</p>
@@ -12,27 +17,42 @@
 <table border="1">
   <thead>
   <tr>
-    <th>ID</th>
+
     <th>Imię</th>
     <th>Nazwisko</th>
     <th>Typ Usługi</th>
     <th>Data Rezerwacji</th>
-    <th>Godzina Rezerwacji</th> <!-- Dodana kolumna dla godziny rezerwacji -->
+    <th>Godzina Rezerwacji</th>
   </tr>
   </thead>
-  <tbody>
-  <tr th:each="reservation : ${reservations}">
 
-    <td th:text="${reservation.id}"></td>
-    <td th:text="${firstName}"></td>
-    <td th:text="${lastName}"></td>
-    <td th:text="${reservation.service_type.name}"></td>
-    <td th:text="${#dates.format(reservation.reservation_date, 'yyyy-MM-dd')}"></td>
-    <td th:text="${#dates.format(reservation.reservation_date, 'HH:mm')}"></td> <!-- Dodanie godziny rezerwacji -->
+  <div>
 
-  </tr>
-  </tbody>
+    <tr th:each="reservation : ${reservations}">
+
+      <td th:text="${firstName}"></td>
+      <td th:text="${lastName}"></td>
+      <td th:text="${reservation.service_type.name}"></td>
+      <td th:text="${#dates.format(reservation.reservation_date, 'yyyy-MM-dd')}"></td>
+      <td th:text="${#dates.format(reservation.reservation_date, 'HH:mm')}"></td>
+    </tr>
+
+  </div>
+
 </table>
+
+
+<footer>
+
+  <div th:if="${#authorization.expression('isAuthenticated()')}">
+    <a th:href="@{/homePage}">Strona główna</a>
+  </div>
+  <div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <a th:href="@{/YouAreBeautiful}">Strona główna</a>
+  </div>
+
+</footer>
+
 </body>
 </html>
 
