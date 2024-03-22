@@ -31,8 +31,14 @@
     <nav>
       <ul>
         <li><a th:href="@{/my/reservations}">MyReservation</a></li>
+
+        <li sec:authorize="hasRole('ROLE_ADMIN')">
+          <a th:href="@{/reservations}">Reservations</a>
+        </li>
+
         <li><a th:href="@{/contact}">Contact</a></li>
         <li><a th:href="@{/gallery}">Gallery</a></li>
+        <li><a th:href="@{/logout}">Logout</a></li>
 
       </ul>
     </nav>
