@@ -134,6 +134,7 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/YouAreBeautiful").permitAll()
                         .requestMatchers(HttpMethod.GET, "/homePage").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/reservations").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
                 .formLogin(formLogin -> formLogin
