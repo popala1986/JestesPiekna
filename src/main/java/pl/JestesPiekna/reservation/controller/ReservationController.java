@@ -34,9 +34,6 @@ public class ReservationController {
     @GetMapping("/addReservation")
     public String showReservationForm(Model model) {
 
-        String username = reservationService.getUsernameFromContext();
-        model.addAttribute("username", username);
-
         String firstName = String.valueOf(reservationService.getFirstNameFromContext());
         model.addAttribute("firstName", firstName);
 
