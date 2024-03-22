@@ -98,7 +98,7 @@ public class ReservationService {
     public String getFirstNameFromUserProfil(String username) {
 
         User user = userRepository.findUserByUsername(username);
-        // Sprawdź, czy użytkownik istnieje
+
         if (user != null) {
             UserProfile userProfile = user.getUserProfile();
 
