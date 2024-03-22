@@ -2,6 +2,7 @@ package pl.JestesPiekna.reservation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import pl.JestesPiekna.serviceType.service.ServiceTypeService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ReservationController {
@@ -83,31 +85,22 @@ public class ReservationController {
 
 
 
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/reservations")
     public String showReservations(Model model) {
-
         String username = reservationService.getUsernameFromContext();
-
-
-
         List<Reservation> reservations = reservationService.getAllReservations();
 
+        List<String> firstNames = reservations.stream()
+                .map(reservation -> reservation.getClient().getUserProfile())
+                .map(userProfile -> userProfile != null ? userProfile.getFirstName() : "Brak danych")
+                .collect(Collectors.toList());
 
-        List<String> firstNames = new ArrayList<>();
-        List<String> lastNames = new ArrayList<>();
-
-
-        for (Reservation reservation : reservations) {
-            UserProfile userProfile = reservation.getClient().getUserProfile();
-            if (userProfile != null) {
-                firstNames.add(userProfile.getFirstName());
-                lastNames.add(userProfile.getLastName());
-            } else {
-                firstNames.add("Brak danych");
-                lastNames.add("Brak danych");
-            }
-        }
-
+        List<String> lastNames = reservations.stream()
+                .map(reservation -> reservation.getClient().getUserProfile())
+                .map(userProfile -> userProfile != null ? userProfile.getLastName() : "Brak danych")
+                .collect(Collectors.toList());
 
         model.addAttribute("firstNames", firstNames);
         model.addAttribute("lastNames", lastNames);
@@ -116,6 +109,8 @@ public class ReservationController {
 
         return "reservationsView";
     }
+
+
 
     @GetMapping("/my/reservations")
     public String showMyReservations(Model model) {
