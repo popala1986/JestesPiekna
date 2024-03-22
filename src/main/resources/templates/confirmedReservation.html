@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Potwierdzenie rezerwacji</title>
+</head>
+<body>
+<h1>Potwierdzenie rezerwacji</h1>
+
+<p>Twoja rezerwacja została zapisana.</p>
+<p>Możesz zobaczyć szczegóły poniżej:</p>
+
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+
+<!-- Tutaj możesz dodać sekcję z informacjami o rezerwacji, jeśli chcesz -->
+
+<div th:if="${#authorization.expression('isAuthenticated()')}">
+  <a th:href="@{/homePage}">Strona główna</a>
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+  <a th:href="@{/YouAreBeautiful}">Strona główna</a>
+</div>
+</body>
+</html>

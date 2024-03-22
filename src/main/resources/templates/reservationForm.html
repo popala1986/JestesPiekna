@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz rezerwacji</title>
+</head>
+<body>
+<h1>Formularz rezerwacji</h1>
+
+<p>Witaj, <span th:text="${username}"></span>!</p>
+<p>Witaj, <span th:text="${firstName}"></span>!</p>
+
+<!-- Dodajemy obszar dla komunikatu błędu -->
+<div th:if="${errorMessage}" class="error-message">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<form action="/submitReservation" method="post">
+
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+    <label for="serviceType">Wybierz usługę:</label>
+    <select id="serviceType" name="serviceTypeId">
+        <option value="">Wybierz...</option>
+        <option th:each="serviceType : ${serviceTypes}"
+                th:value="${serviceType.id}"
+                th:text="${serviceType.name + ' - ' + serviceType.price + ' PLN'}">
+        </option>
+    </select>
+
+    <label for="reservationDateTime">Data rezerwacji:</label>
+    <input type="datetime-local" id="reservationDateTime" name="reservationDateTime">
+
+    <button type="submit">Zapisz rezerwację</button>
+</form>
+
+</body>
+</html>

@@ -20,7 +20,7 @@
       <button class="btnMenu"><i class="fa fa-bars"></i></button>
 
       <div class="menuContent">
-        <a th:href="@{/client/addReservation}">Book your visit</a>
+        <a th:href="@{/addReservation}">Book your visit</a>
       </div>
 
     </div>
@@ -30,7 +30,7 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#">Portfolio</a></li>
+        <li><a th:href="@{/my/reservations}">MyReservation</a></li>
         <li><a th:href="@{/contact}">Contact</a></li>
         <li><a th:href="@{/gallery}">Gallery</a></li>
 
@@ -68,6 +68,10 @@
   </main>
 
   <footer>
+
+    <div th:if="${username}">
+      <p>Logged in as: <span th:text="${username}"></span></p>
+    </div>
 
   </footer>
 

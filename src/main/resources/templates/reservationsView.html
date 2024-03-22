@@ -1,0 +1,28 @@
+<body>
+<h1>Lista Rezerwacji</h1>
+
+<p>Witaj, <span th:text="${firstName}"></span> <span th:text="${lastName}"></span>!</p>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Typ Usługi</th>
+    <th>Data Rezerwacji</th>
+    <th>Godzina Rezerwacji</th> <!-- Dodana kolumna dla godziny rezerwacji -->
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="reservation : ${reservations}">
+    <td th:text="${reservation.id}"></td>
+    <td th:text="${reservation.client.userProfile.firstName}"></td> <!-- Pobierz imię z profilu użytkownika rezerwującego -->
+    <td th:text="${reservation.client.userProfile.lastName}"></td> <!-- Pobierz nazwisko z profilu użytkownika rezerwującego -->
+    <td th:text="${reservation.service_type.name}"></td>
+    <td th:text="${#dates.format(reservation.reservation_date, 'yyyy-MM-dd')}"></td>
+    <td th:text="${#dates.format(reservation.reservation_date, 'HH:mm')}"></td> <!-- Dodanie godziny rezerwacji -->
+  </tr>
+  </tbody>
+</table>
+</body>
