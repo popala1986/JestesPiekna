@@ -7,7 +7,10 @@ body {
 
 h1 {
     text-align: center;
-    color: #333;
+        margin-top: 30px;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: #fff;
 }
 
 form {
@@ -58,4 +61,15 @@ button[type="submit"]:hover {
 
 .center-text {
     text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: #fff;
 }

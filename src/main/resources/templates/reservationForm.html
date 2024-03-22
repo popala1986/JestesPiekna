@@ -6,11 +6,10 @@
     <link rel="stylesheet" type="text/css" href="/reservation.css">
 </head>
 <body>
-<h1>Formularz rezerwacji</h1>
-
-
 <p class="center-text">Witaj, <span th:text="${firstName}"></span>!</p>
 
+
+<h1>Umów Wizytę</h1>
 
 
 <div th:if="${errorMessage}" class="error-message">
@@ -37,4 +36,17 @@
 </form>
 
 </body>
+
+<footer>
+
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <a th:href="@{/homePage}">Strona główna</a>
+    </div>
+    <div th:unless="${#authorization.expression('isAuthenticated()')}">
+        <a th:href="@{/YouAreBeautiful}">Strona główna</a>
+    </div>
+
+</footer>
+
+
 </html>
