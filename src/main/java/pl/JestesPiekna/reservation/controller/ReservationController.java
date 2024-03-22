@@ -1,0 +1,142 @@
+package pl.JestesPiekna.reservation.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.JestesPiekna.model.*;
+import pl.JestesPiekna.reservation.service.ReservationService;
+import pl.JestesPiekna.serviceType.service.ServiceTypeService;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Controller
+public class ReservationController {
+
+    private final ReservationService reservationService;
+
+    private final ServiceTypeService serviceTypeService;
+
+    @Autowired
+    public ReservationController(ReservationService reservationService, ServiceTypeService serviceTypeService) {
+        this.reservationService = reservationService;
+        this.serviceTypeService = serviceTypeService;
+    }
+
+    @GetMapping("/addReservation")
+    public String showReservationForm(Model model) {
+
+        String username = reservationService.getUsernameFromContext();
+        model.addAttribute("username", username);
+
+        String firstName = String.valueOf(reservationService.getFirstNameFromContext());
+        model.addAttribute("firstName", firstName);
+
+        List<ServiceType> serviceTypes = serviceTypeService.getAllServiceTypes();
+        model.addAttribute("serviceTypes", serviceTypes);
+
+
+        return "reservationForm";
+    }
+
+    @PostMapping("/submitReservation")
+    public String submitReservation(@RequestParam("serviceTypeId") Integer serviceTypeId,
+                                    @RequestParam("reservationDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date reservationDateTime,
+                                    Model model,
+                                    Authentication authentication) {
+
+
+        User client = reservationService.getLoggedInUser();
+
+
+        ServiceType serviceType = serviceTypeService.getServiceTypeById(serviceTypeId);
+
+
+        Reservation reservation = new Reservation();
+        reservation.setService_type(serviceType);
+        reservation.setReservation_date(reservationDateTime);
+
+
+        reservation.setClient(client);
+
+
+        if (!reservationService.existsByReservationDateAndServiceType(reservationDateTime, serviceType)) {
+
+            reservationService.saveReservation(reservation,client);
+
+
+            return "confirmedReservation";
+        } else {
+
+            model.addAttribute("errorMessage", "Wybrana data jest już zarezerwowana dla wybranej usługi. Proszę wybrać inną datę lub inną usługę.");
+            model.addAttribute("serviceTypes", serviceTypeService.getAllServiceTypes());
+            model.addAttribute("selectedServiceTypeId", serviceTypeId);
+            return "reservationForm";
+        }
+    }
+
+
+
+    @GetMapping("/reservations")
+    public String showReservations(Model model) {
+
+        List<Reservation> reservations = reservationService.getAllReservations();
+
+
+        List<String> firstNames = new ArrayList<>();
+        List<String> lastNames = new ArrayList<>();
+
+
+        for (Reservation reservation : reservations) {
+            UserProfile userProfile = reservation.getClient().getUserProfile();
+            if (userProfile != null) {
+                firstNames.add(userProfile.getFirstName());
+                lastNames.add(userProfile.getLastName());
+            } else {
+                firstNames.add("Brak danych");
+                lastNames.add("Brak danych");
+            }
+        }
+
+
+        model.addAttribute("firstNames", firstNames);
+        model.addAttribute("lastNames", lastNames);
+
+
+        model.addAttribute("reservations", reservations);
+
+        return "reservationsView";
+    }
+
+    @GetMapping("/my/reservations")
+    public String showMyReservations(Model model) {
+
+        String username = reservationService.getUsernameFromContext();
+
+
+        if (username == null) {
+            return "redirect:/loginForm";
+        }
+
+        String firstName = reservationService.getFirstNameFromUserProfil(username);
+        String lastName = reservationService.getLastNameFromUserProfil(username);
+
+
+        User loggedInUser = reservationService.getLoggedInUser();
+        List<Reservation> reservations = reservationService.getAllReservationsForUser(loggedInUser);
+
+
+        model.addAttribute("firstName", firstName);
+        model.addAttribute("lastName", lastName);
+        model.addAttribute("reservations", reservations);
+
+        return "myReservationsView";
+    }
+}
+
