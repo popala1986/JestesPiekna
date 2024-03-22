@@ -141,7 +141,10 @@ main {
 }
 
 h2 {
-    color: #333;
+    text-align: center;
+         font-weight: bold;
+            font-style: italic;
+            color: #333;
 }
 
 .photo-gallery {
