@@ -31,6 +31,7 @@ public class ReservationController {
         this.serviceTypeService = serviceTypeService;
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/addReservation")
     public String showReservationForm(Model model) {
 
@@ -44,6 +45,7 @@ public class ReservationController {
         return "reservationForm";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/submitReservation")
     public String submitReservation(@RequestParam("serviceTypeId") Integer serviceTypeId,
                                     @RequestParam("reservationDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date reservationDateTime,
@@ -107,6 +109,7 @@ public class ReservationController {
         return "reservationsView";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/my/reservations")
     public String showMyReservations(Model model) {
 
