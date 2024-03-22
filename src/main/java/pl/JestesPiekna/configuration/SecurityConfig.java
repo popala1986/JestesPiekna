@@ -85,9 +85,9 @@ public class SecurityConfig {
 
             UserProfile adminUserProfile = new UserProfile();
             adminUserProfile.setFirstName("Paweł");
-            adminUserProfile.setLastName("Kowalski");
-            adminUserProfile.setPhone("502456897");
-            adminUserProfile.setHealth_condition("Healthy");
+            adminUserProfile.setLastName("Opala");
+            adminUserProfile.setPhone("505597277");
+            adminUserProfile.setHealth_condition("Healthy, but allergic to bright light");
             adminUserProfile.setUser(adminEntity);
             adminEntity.setUserProfile(adminUserProfile);
 
@@ -96,13 +96,12 @@ public class SecurityConfig {
             adminAuthority.setAuthority("ROLE_ADMIN");
             adminAuthority.setUser(adminEntity);
 
-            Authorities userAuthority = new Authorities();
-            userAuthority.setUsername("admin");
-            userAuthority.setAuthority("ROLE_USER");
-            userAuthority.setUser(adminEntity);
+            Authorities ownerAuthority = new Authorities();
+            ownerAuthority.setUsername("admin");
+            ownerAuthority.setAuthority("ROLE_OWNER");
+            ownerAuthority.setUser(adminEntity);
 
-
-            adminEntity.setAuthoritiesList(Arrays.asList(adminAuthority, userAuthority));
+            adminEntity.setAuthoritiesList(Arrays.asList(adminAuthority, ownerAuthority));
 
             userRepository.save(adminEntity);
 
