@@ -86,6 +86,10 @@ public class ReservationController {
     @GetMapping("/reservations")
     public String showReservations(Model model) {
 
+        String username = reservationService.getUsernameFromContext();
+
+
+
         List<Reservation> reservations = reservationService.getAllReservations();
 
 
@@ -107,8 +111,7 @@ public class ReservationController {
 
         model.addAttribute("firstNames", firstNames);
         model.addAttribute("lastNames", lastNames);
-
-
+        model.addAttribute("username", username);
         model.addAttribute("reservations", reservations);
 
         return "reservationsView";
