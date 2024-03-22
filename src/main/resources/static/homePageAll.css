@@ -115,8 +115,9 @@ main {
 
 .OWNER {
     text-align: center;
-    font-family: 'Arial', sans-serif;
-
+     font-weight: bold;
+        font-style: italic;
+        color: #333;
 }
 
 .slide-in-text {
@@ -237,4 +238,12 @@ footer {
 .btnMenu2:hover + .menuContent2,
 .menuContent2:hover {
     display: flex;
+}
+
+.S3 {
+
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+
 }

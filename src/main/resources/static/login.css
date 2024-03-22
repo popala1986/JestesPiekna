@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-/* Style for the login container */
+
 .login-container {
     background-color: #fff;
     padding: 20px;
@@ -20,14 +20,14 @@ body {
     text-align: center;
 }
 
-/* Style for the form labels */
+
 label {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
 }
 
-/* Style for the form inputs */
+
 input {
     width: 100%;
     padding: 10px;
@@ -37,13 +37,13 @@ input {
     border-radius: 4px;
 }
 
-/* Style for the form error messages */
+
 .error {
     color: #ff0000;
     font-size: 14px;
 }
 
-/* Style for the form submit button */
+
 button {
     background-color: #4caf50;
     color: #fff;
@@ -53,12 +53,12 @@ button {
     cursor: pointer;
 }
 
-/* Hover effect for the submit button */
+
 button:hover {
     background-color: #45a049;
 }
 
-/* Style for the error message */
+
 .error-message {
     color: #ff0000;
     margin-top: 10px;

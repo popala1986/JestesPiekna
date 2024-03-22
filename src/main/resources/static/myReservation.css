@@ -29,8 +29,8 @@ th, td {
 }
 
 th {
-    background-color: #4CAF50; /* Kolor tła dla tytułów kolumn */
-    color: #ffffff; /* Kolor tekstu dla tytułów kolumn */
+    background-color: #4CAF50;
+    color: #ffffff;
 }
 
 tr:hover {
