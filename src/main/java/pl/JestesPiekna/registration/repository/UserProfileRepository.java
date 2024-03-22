@@ -11,4 +11,11 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, Long> 
 
     UserProfile findByPhone(String phone);
 
+
+
+
+
+
 }
+
+
