@@ -37,7 +37,12 @@
         <li sec:authorize="hasRole('ROLE_ADMIN')">
           <a th:href="@{/reservations}">All_Reservations</a>
         </li>
-        <li><a th:href="@{/contact}">Contact</a></li>
+        <li sec:authorize="hasRole('ROLE_USER')">
+          <a th:href="@{/contact}">Contact</a>
+        </li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')">
+          <a th:href="@{/uploadForm}">Add_Picture</a>
+        </li>
         <li><a th:href="@{/gallery}">Gallery</a></li>
         <li><a th:href="@{/logout}">Logout</a></li>
 
