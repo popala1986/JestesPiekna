@@ -23,11 +23,15 @@ public class Reservation {
     @Column(name = "reservation_date")
     private Date reservation_date;
 
-    public Reservation(Integer id, User client, ServiceType service_type, Date reservation_date) {
+
+    private UserType userType;
+
+    public Reservation(Integer id, User client, ServiceType service_type, Date reservation_date, UserType userType) {
         this.id = id;
         this.client = client;
         this.service_type = service_type;
         this.reservation_date = reservation_date;
+        this.userType = userType;
     }
 
     public Reservation() {
@@ -63,5 +67,13 @@ public class Reservation {
 
     public void setReservation_date(Date reservation_date) {
         this.reservation_date = reservation_date;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 }
