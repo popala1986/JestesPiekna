@@ -110,8 +110,6 @@ public class ReservationController {
         return "reservationsView";
     }
 
-
-
     @GetMapping("/my/reservations")
     public String showMyReservations(Model model) {
 
