@@ -108,8 +108,7 @@ public class ReservationController {
 
         return "reservationsView";
     }
-
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/my/reservations")
     public String showMyReservations(Model model) {
 
