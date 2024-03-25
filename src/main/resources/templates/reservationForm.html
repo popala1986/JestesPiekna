@@ -32,7 +32,7 @@
     <label for="reservationDateTime">Data rezerwacji:</label>
     <input type="datetime-local" id="reservationDateTime" name="reservationDateTime">
 
-    <button type="submit">Zapisz rezerwację</button>
+    <button type="submit">Book Reservation</button>
 </form>
 
 </body>
@@ -40,10 +40,10 @@
 <footer>
 
     <div th:if="${#authorization.expression('isAuthenticated()')}">
-        <a th:href="@{/homePage}">Strona główna</a>
+        <a th:href="@{/homePage}">Home</a>
     </div>
     <div th:unless="${#authorization.expression('isAuthenticated()')}">
-        <a th:href="@{/YouAreBeautiful}">Strona główna</a>
+        <a th:href="@{/YouAreBeautiful}">Home</a>
     </div>
 
 </footer>

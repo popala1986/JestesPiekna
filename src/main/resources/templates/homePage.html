@@ -68,7 +68,7 @@
       </section>
 
       <section class="S4">
-        <h2> <a th:href="@{/gallery}">MOJE PRACE</a></h2>
+        <h2> <a th:href="@{/gallery}">Portfolio Prac</a></h2>
         <div class="photo-gallery">
           <div th:each="photo : ${latestPhotos}">
             <img th:src="${'/photos/' + photo.id}" alt="Zdjęcie">

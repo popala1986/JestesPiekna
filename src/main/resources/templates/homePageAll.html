@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./CSS/normalize.css">
     <link rel="stylesheet" type="text/css" href="/homePageAll.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 
@@ -20,16 +21,25 @@
         <div class="NAME">
             <p class="blinking-text">Jesteś Piękna</p>
         </div>
+
         <nav>
             <ul>
-                <li><a href="#">Portfolio</a></li>
-                <li><a th:href="@{/contact}">Contact</a></li>
-                <li><a th:href="@{/gallery}">Gallery</a></li>
-                <li><a th:href="@{/registration}">Register</a></li>
-                <li><a th:href="@{/login}">Login</a></li>
+                <li class="icon">
+                    <a th:href="@{/login}">
+                        <i class="fa fa-user-circle-o user-icon" aria-hidden="true"></i>
+                    </a>
+                </li>
 
+                <li>
+                    <a th:href="@{/login}">Log in / Sign up</a>
+                </li>
+
+                <li><a th:href="@{/contact}">Contact</a></li>
+
+                <li><a th:href="@{/gallery}">Gallery</a></li>
             </ul>
         </nav>
+
     </header>
 
     <main>
@@ -53,7 +63,7 @@
             </section>
 
             <section class="S4">
-                <h2> <a th:href="@{/gallery}">MOJE PRACE</a></h2>
+                <h2> <a th:href="@{/gallery}">Portfolio Prac</a></h2>
 
                 <div class="photo-gallery">
                     <div th:each="photo : ${latestPhotos}">
@@ -75,3 +85,4 @@
 
 </body>
 </html>
+

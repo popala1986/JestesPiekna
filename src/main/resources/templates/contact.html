@@ -20,10 +20,10 @@
     </div>
 
     <div th:if="${#authorization.expression('isAuthenticated()')}">
-        <a th:href="@{/homePage}">Strona główna</a>
+        <a th:href="@{/homePage}">Home</a>
     </div>
     <div th:unless="${#authorization.expression('isAuthenticated()')}">
-        <a th:href="@{/YouAreBeautiful}">Strona główna</a>
+        <a th:href="@{/YouAreBeautiful}">Home</a>
     </div>
 
 </div>
