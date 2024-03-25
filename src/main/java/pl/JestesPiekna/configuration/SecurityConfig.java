@@ -37,6 +37,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
 
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true)
@@ -116,9 +117,12 @@ public class SecurityConfig {
 
         http
                 .sessionManagement(sessionManagement -> sessionManagement
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                        .maximumSessions(1)
-                        .maxSessionsPreventsLogin(false)
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                        .sessionFixation()
+                        .migrateSession()
+                        .invalidSessionUrl("/logout")
+                        .maximumSessions(3)
+                        .expiredUrl("/logout")
                         .sessionRegistry(sessionRegistry())
                 )
                 .addFilterBefore(concurrentSessionFilter(), ConcurrentSessionFilter.class)
@@ -171,7 +175,7 @@ public class SecurityConfig {
 
 
 
-
+    @Bean
     public SessionRegistry sessionRegistry() {
         return new SessionRegistryImpl();
     }
@@ -195,16 +199,4 @@ public class SecurityConfig {
             }
         };
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
