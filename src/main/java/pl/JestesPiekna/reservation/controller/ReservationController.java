@@ -14,6 +14,7 @@ import pl.JestesPiekna.reservation.service.ReservationService;
 import pl.JestesPiekna.serviceType.service.ServiceTypeService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -108,6 +109,7 @@ public class ReservationController {
 
         return "reservationsView";
     }
+
     @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/my/reservations")
     public String showMyReservations(Model model) {
