@@ -6,12 +6,12 @@
   <link rel="stylesheet" type="text/css" href="/login.css">
 </head>
 <body>
+
+
 <div class="login-container">
   <h1>Login</h1>
 
   <form th:action="@{/login}" th:object="${loginDto}" method="post">
-
-
 
     <div>
       <label for="username">Username:</label>
@@ -25,10 +25,10 @@
       <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
     </div>
 
-    <div>
-      <button type="submit">Login</button>
+    <div class="form-buttons">
+      <button class="login-button""" type="submit">Login</button>
+      <a th:href="@{/registration}" class="signup-button">Sign up</a>
     </div>
-
 
     <div>
       <a th:href="@{/YouAreBeautiful}">Home</a>
@@ -36,15 +36,7 @@
 
   </form>
 
-
-
 </div>
-
-<div class="register-container">
-  <h1>Sign up</h1>
-  <div>
-    <a th:href="@{/registration}">Sign up</a>
-  </div>
 
 </div>
 
