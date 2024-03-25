@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    font-family: 'Roboto', sans-serif; /* Używamy czcionki Roboto dla całej strony */
+    font-family: 'Roboto', sans-serif;
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
@@ -18,13 +18,13 @@ body {
 h1 {
     font-size: 2em;
     color: #4CAF50;
-    margin-bottom: 20px; /* Dodajemy margines na dół, aby oddzielić nagłówek od treści */
+    margin-bottom: 20px;
 }
 
 p {
     font-size: 1.2em;
     color: #333;
-    margin-bottom: 10px; /* Dodajemy mniejszy margines na dół między akapitami */
+    margin-bottom: 10px;
 }
 
 a {
@@ -35,4 +35,11 @@ a {
 
 a:hover {
     color: #45a049;
+}
+
+
+@media screen and (max-width: 768px) {
+    body {
+        height: auto;
+    }
 }

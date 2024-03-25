@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    font-family: 'Roboto', sans-serif; /* Używamy zaimportowanej czcionki Roboto dla całej strony */
+    font-family: 'Roboto', sans-serif;
     width: 75%;
     margin: 0 auto;
     padding: 0;
@@ -9,8 +9,8 @@ body {
 }
 
 h1 {
-    font-family: 'Roboto', sans-serif; /* Używamy zaimportowanej czcionki Roboto */
-    font-size: 1.5em; /* Zmniejszamy rozmiar czcionki */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
     text-align: center;
     margin-top: 30px;
     padding: 10px;
@@ -77,4 +77,10 @@ footer {
     padding: 20px;
     background-color: #4CAF50;
     color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    form {
+        padding: 10px;
+    }
 }

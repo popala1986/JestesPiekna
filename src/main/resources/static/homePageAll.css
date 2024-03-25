@@ -1,15 +1,35 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+ul,
+ol,
+li,
+form,
+label {
     margin: 0;
     padding: 0;
+    border: 0;
     box-sizing: border-box;
 }
 
+
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Roboto Slab', serif;
     background-color: #f8f8f8;
 }
+
 
 .container {
     max-width: 1200px;
@@ -18,29 +38,100 @@ body {
 }
 
 
-
 header {
     background-color: #333;
     color: #fff;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+     .NAME p {
+            margin-right: 49px;
+        }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    nav ul li {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul li.login-item {
+        margin-left: 0;
+    }
+
+    nav ul li:last-child {
+        margin-left: 20px;
+    }
+
+    nav ul li:last-child a {
+        padding: 10px;
+    }
+
+    .LOGO img {
+        max-width: 100%;
+    }
+
+    .btnMenu {
+        display: block;
+    }
+
+    .menuContent {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        border: 1px solid #fff;
+        width: 150px;
+        z-index: 1;
+    }
+
+    .btnMenu:hover .menuContent {
+        display: flex;
+    }
+
+    .menuContent a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .menuContent a:hover {
+        background-color: #555;
+    }
+}
+
+/* Tekst w nagłówku */
+header .NAME {
+    flex-grow: 1;
+    text-align: center;
+    margin-left: 30%;
 }
 
 .NAME {
-    text-align: center; /* Wyśrodkowanie tekstu */
-    flex-grow: 1; /* Rozciągnięcie NAME, aby zajmowało dostępną przestrzeń */
-    margin-left: 34%; /* Przesunięcie NAME na prawo */
+    text-align: center;
+    flex-grow: 1;
+    margin-left: 35%;
 }
 
 .blinking-text {
@@ -54,14 +145,16 @@ header {
     100% { color: #e0c30b; }
 }
 
+/* Nawigacja */
 nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li {
-    display: inline;
     margin-left: 20px;
 }
 
@@ -74,6 +167,27 @@ nav ul li a:hover {
     color: #e0c30b;
 }
 
+/* Ikona logowania */
+.login-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+.login-icon i {
+    color: #fff;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+/* Główna treść */
 main {
     background-color: #fff;
     padding: 20px;
@@ -82,6 +196,7 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Sekcje */
 .SECTION {
     display: flex;
     flex-direction: column;
@@ -90,36 +205,32 @@ main {
 
 .S1,
 .S3,
-.S4,
-.S5 {
-    text-align: center;
-}
-
-.S1,
-.S3,
 .S4 {
-    border-bottom: 2px solid #ddd;
+    text-align: center;
     padding-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    font-family: 'Roboto Slab', serif;
 }
 
-.S1:last-child,
-.S3:last-child,
 .S4:last-child {
     border-bottom: none;
 }
 
+/* Logo */
 .LOGO img {
-   width: 250px;
-   height: 250px;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
 }
 
-.OWNER {
-    text-align: center;
-     font-weight: bold;
-        font-style: italic;
-        color: #333;
+/* Nagłówek w sekcji */
+.OWNER h1 {
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
 }
 
+/* Animacja */
 .slide-in-text {
     animation: slideIn 2s ease-in-out;
 }
@@ -135,18 +246,14 @@ main {
     }
 }
 
-.S3,
-.S4 {
-    margin-top: 20px;
+/* Tekst w sekcji 3 */
+.S3 p {
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
 }
 
-h2 {
-    text-align: center;
-         font-weight: bold;
-            font-style: italic;
-            color: #333;
-}
-
+/* Galeria zdjęć */
 .photo-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -160,93 +267,14 @@ h2 {
     border-radius: 8px;
 }
 
-footer {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-}
-
 .S4 .photo-gallery img {
     width: 350px;
     height: 350px;
 }
 
-
-
-
-
-.BUTTON {
-    position: relative;
-}
-
-.btnMenu {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-}
-
-.menuContent {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    border: 1px solid #fff;
-    width: 150px;
-    z-index: 1;
-}
-
-.BUTTON:hover .menuContent {
-    display: flex;
-}
-
-.menuContent a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
+/* Stopka */
+footer {
     text-align: center;
-}
-
-.menuContent a:hover {
-    background-color: #555;
-}
-
-.btnMenu2 {
-
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-}
-
-
-.menuContent2 {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0; /
-    background-color: #333;
-    border: 1px solid #fff;
-    width: 150px;
-    z-index: 1;
-}
-
-.btnMenu2:hover + .menuContent2,
-.menuContent2:hover {
-    display: flex;
-}
-
-.S3 {
-
-    font-weight: bold;
-    font-style: italic;
-    color: #333;
-
-}
+    margin-top: 20px;
+    padding: 20px;
+}    padding:

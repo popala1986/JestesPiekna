@@ -16,6 +16,7 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
 
 
 
@@ -38,8 +39,10 @@ header {
 }
 
 .NAME {
-    text-align: center; /* Wyśrodkowanie tekstu */
-    flex-grow: 1; /* Rozciągnięcie NAME, aby zajmowało dostępną przestrzeń */
+    text-align: center;
+    flex-grow: 1;
+    font-family: 'Roboto Slab', serif;
+
 
 }
 
@@ -141,6 +144,8 @@ main {
 
 h2 {
     color: #333;
+    font-family: 'Roboto Slab', serif;
+
 }
 
 .photo-gallery {
@@ -237,4 +242,34 @@ footer {
 .btnMenu2:hover + .menuContent2,
 .menuContent2:hover {
     display: flex;
+}
+
+.backPage {
+    font-family: 'Roboto Slab', serif;
+     font-size: 24px;
+
+
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .NAME {
+        font-size: 18px;
+    }
+
+    .blinking-text {
+        font-size: 20px;
+    }
+
+    .photo-gallery img {
+        width: 150px;
+    }
+
+    .S4 .photo-gallery img {
+        width: 250px;
+        height: 250px;
+    }
 }
