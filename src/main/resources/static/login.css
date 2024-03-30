@@ -10,7 +10,8 @@ body {
 }
 
 .login-container {
-    width: 400px;
+    width: 40%;
+    height: 50%;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -42,7 +43,7 @@ input {
 button, .signup-button {
     background-color: #4caf50;
     color: #fff;
-    padding: 10px 12px; /* Zastosowana ta sama wartość padding dla obu przycisków */
+    padding: 10px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -51,11 +52,11 @@ button, .signup-button {
 }
 
 .signup-button {
-    margin-left: 20px; /* Zwiększony margines dla przycisku "Sign up" */
+    margin-left: 20px;
 }
 
 .login-button {
-    font-size: 16px; /* Nowy rozmiar czcionki dla przycisku Login */
+    font-size: 16px;
 }
 
 
@@ -72,26 +73,26 @@ button:hover, .signup-button:hover {
 
 @media screen and (max-width: 768px) {
     .login-container {
-        width: 90%; /* Ustaw szerokość kontenera na 90% szerokości ekranu */
-        margin: 100px auto; /* Ustaw duży margines na górze i dole oraz auto po bokach */
-        padding: 50px; /* Dodaj dużą ilość wewnętrznego odstępu */
+        width: 80%;
+        height: auto;
+        margin: 50px auto;
     }
 
     label {
-        font-size: 24px; /* Zwiększ rozmiar czcionki dla etykiet */
+        font-size: 18px;
     }
 
     input {
-        padding: 20px; /* Zwiększ rozmiar wypełnienia dla pól tekstowych */
-        font-size: 20px; /* Zwiększ rozmiar czcionki dla pól tekstowych */
+        padding: 15px;
+        font-size: 16px;
     }
 
     button, .signup-button {
-        padding: 20px 30px; /* Zwiększ rozmiar przycisków */
-        font-size: 24px; /* Zwiększ rozmiar czcionki dla przycisków */
+        padding: 15px 20px;
+        font-size: 18px;
     }
 
     .form-buttons {
-        margin-top: 40px; /* Zwiększ odstęp między przyciskami */
+        margin-top: 30px;
     }
 }

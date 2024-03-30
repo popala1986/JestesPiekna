@@ -26,6 +26,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 4px;
 }
 
 .NAME {
@@ -102,6 +103,7 @@ main {
 .LOGO img {
    width: 250px;
    height: 250px;
+   border-radius: 8px;
 }
 
 .OWNER {
@@ -157,6 +159,7 @@ footer {
     padding: 10px;
     background-color: #333;
     color: #fff;
+    border-radius: 4px;
 }
 
 .S4 .photo-gallery img {
@@ -166,7 +169,6 @@ footer {
 
 .S4 {
     font-family: 'Roboto Slab', serif;
-    background-color: #f8f8f8;
 }
 
 .BUTTON {
@@ -239,7 +241,10 @@ footer {
     color: #333;
 }
 
-/* Responsywność */
+.S3 h2 {
+
+    margin: 10px;
+}
 
 @media screen and (max-width: 768px) {
   .container {
