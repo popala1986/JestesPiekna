@@ -35,14 +35,13 @@ tbody tr:nth-child(even) {
 }
 
 footer {
-    position: fixed; /* Zmiana pozycji na absolutną */
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    position: static; /* lub position: relative; */
     background-color: #333;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 0; /* Zmniejszyłem lewy i prawy padding, aby stopka była bardziej wycentrowana */
     text-align: center;
+    margin: 0 auto; /* Dodane centrowanie treści */
+    width: 80%; /* Ograniczenie szerokości stopki */
 }
 
 footer div {
@@ -64,21 +63,20 @@ p {
     margin-top: 10px;
 }
 
-@media screen and (max-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-
+@media screen and (max-width: 600px) {
     table {
-        width: 100%;
-        margin: 10px auto;
+        margin-top: 10px;
+        font-size: 12px;
     }
 
-    th, td {
-        padding: 8px;
-    }
 
     footer {
-        position: relative;
+        position: static; /* lub position: relative; */
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0; /* Zmniejszyłem lewy i prawy padding, aby stopka była bardziej wycentrowana */
+        text-align: center;
+        margin: 0 auto; /* Dodane centrowanie treści */
+        width: 95%; /* Ograniczenie szerokości stopki */
     }
 }
