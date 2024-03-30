@@ -12,12 +12,12 @@ h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
     text-align: center;
-    margin: 30px auto; /* Marginesy na górze i dole będą automatycznie ustawione na taką samą wartość */
+    margin: 30px auto;
     padding: 10px;
     background-color: #4CAF50;
     color: #fff;
     border-radius: 5px;
-    max-width: 400px; /* Maksymalna szerokość nagłówka */
+    max-width: 400px;
 }
 
 form {
@@ -99,24 +99,24 @@ button[type="submit"]:hover {
 }
 
 footer {
-    text-align: center; /* Wyśrodkowanie tekstu poziomo */
-    margin: 30px auto; /* Wyśrodkowanie stopki poziomo */
+    text-align: center;
+    margin: 30px auto;
     padding: 20px;
     background-color: #4CAF50;
     color: #fff;
     border-radius: 5px;
-    max-width: 400px; /* Maksymalna szerokość stopki */
+    max-width: 400px;
 }
 
 .footer-link {
-    display: inline-block; /* Spowoduje, że link będzie zachowywał się jak blok */
-    color: #fff; /* Kolor tekstu linków */
-    text-decoration: none; /* Usunięcie podkreślenia */
-    margin: 0 10px; /* Margines między linkami */
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
 }
 
 .footer-link:hover {
-    text-decoration: underline; /* Podkreślenie linku po najechaniu kursorem */
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
