@@ -86,11 +86,13 @@ public class ReservationController {
 
 
 
+
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/reservations")
     public String showReservations(Model model) {
         String username = reservationService.getUsernameFromContext();
-        List<Reservation> reservations = reservationService.getAllReservations();
+        List<Reservation> reservations = reservationService.findAllReservationsSortedByReservationDateAsc();
 
         List<String> firstNames = reservations.stream()
                 .map(reservation -> reservation.getClient().getUserProfile())
@@ -110,6 +112,7 @@ public class ReservationController {
         return "reservationsView";
     }
 
+
     @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/my/reservations")
     public String showMyReservations(Model model) {
@@ -126,7 +129,8 @@ public class ReservationController {
 
 
         User loggedInUser = reservationService.getLoggedInUser();
-        List<Reservation> reservations = reservationService.getAllReservationsForUser(loggedInUser);
+        List<Reservation> reservations = reservationService.getAllReservationsForUserByOrderReservationDateAsc(loggedInUser);
+
 
 
         model.addAttribute("firstName", firstName);
