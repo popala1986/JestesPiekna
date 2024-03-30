@@ -1,6 +1,7 @@
 package pl.JestesPiekna.reservation.service;
 
 
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -86,6 +87,11 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
+    public List<Reservation> findAllReservationsSortedByReservationDateAsc() {
+        return reservationRepository.findAllReservationsSortedByReservationDateAsc();
+    }
+
+
     public boolean existsByReservationDateAndServiceType(Date reservationDate, ServiceType serviceType) {
         return reservationRepository.existsByReservationDateAndServiceType(reservationDate, serviceType);
     }
@@ -126,6 +132,10 @@ public class ReservationService {
 
     public List<Reservation> getAllReservationsForUser(User user) {
         return reservationRepository.findAllByClient(user);
+    }
+
+    public List<Reservation> getAllReservationsForUserByOrderReservationDateAsc(User user) {
+        return reservationRepository.findAllByClientOrderByReservationDateAsc(user);
     }
 
 
