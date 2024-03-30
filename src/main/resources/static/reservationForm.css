@@ -42,7 +42,7 @@ label {
 
 input[type="datetime-local"],
 select {
-    width: 95%;
+    width: 92%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -119,17 +119,8 @@ footer {
     text-decoration: underline; /* Podkreślenie linku po najechaniu kursorem */
 }
 
-
-
-
-
-
-
 @media screen and (max-width: 768px) {
     form {
         padding: 10px;
     }
-
-
-
 }

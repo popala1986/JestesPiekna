@@ -39,7 +39,7 @@ a:hover {
 
 
 @media screen and (max-width: 768px) {
-    body {
-        height: auto;
+    form {
+        padding: 10px;
     }
 }

@@ -4,8 +4,10 @@
     background-color: #f2f2f2;
     padding: 20px;
     border-radius: 10px;
-    margin: 0 auto;
-    width: 75%;
+    margin: 20px auto; /* Zmieniono na margines górny i dolny */
+    width: 90%; /* Zmieniono na procent szerokości */
+    max-width: 800px; /* Dodano maksymalną szerokość */
+    box-sizing: border-box; /* Dodano, aby margines i padding nie zwiększały szerokości */
 }
 
 h1 {
@@ -14,12 +16,12 @@ h1 {
 }
 
 table {
-    width: 75%;
-    border-collapse: collapse;
+    width: 90%; /* Zmieniono na procent szerokości */
     margin: 20px auto;
     background-color: #008000;
     color: #ffffff;
     border-radius: 10px;
+    box-sizing: border-box; /* Dodano, aby margines i padding nie zwiększały szerokości */
 }
 
 th, td {
@@ -42,8 +44,20 @@ footer {
     text-align: center;
 }
 
+/* Dodaj przewijanie poziome */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Zmniejsz szerokość całej tabeli na smartfonie */
 @media screen and (max-width: 768px) {
-    .center-text, h1, table {
-        width: 100%;
+    table {
+        width: 90%; /* Zmiejsz szerokość tabeli, aby zmieściła się na ekranie smartfona */
+        margin: 10px auto; /* Dostosuj marginesy, aby tabela była wyśrodkowana na ekranie */
     }
+    th, td {
+        padding: 4px; /* Zmniejsz odstępy wewnątrz komórek */
+    }
+
+
 }

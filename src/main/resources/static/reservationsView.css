@@ -35,7 +35,7 @@ tbody tr:nth-child(even) {
 }
 
 footer {
-    position: fixed;
+    position: fixed; /* Zmiana pozycji na absolutną */
     bottom: 0;
     left: 0;
     width: 100%;
