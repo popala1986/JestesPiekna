@@ -21,5 +21,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
     List<Reservation> findAllByClient(User client);
 
+    @Query("SELECT r FROM Reservation r WHERE r.client = :client ORDER BY r.reservation_date ASC")
+    List<Reservation> findAllByClientOrderByReservationDateAsc(@Param("client") User client);
+
+    @Query("SELECT r FROM Reservation r ORDER BY r.reservation_date ASC")
+    List<Reservation> findAllReservationsSortedByReservationDateAsc();
+
 
 }
