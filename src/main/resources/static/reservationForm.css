@@ -12,10 +12,12 @@ h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
     text-align: center;
-    margin-top: 30px;
+    margin: 30px auto; /* Marginesy na górze i dole będą automatycznie ustawione na taką samą wartość */
     padding: 10px;
     background-color: #4CAF50;
     color: #fff;
+    border-radius: 5px;
+    max-width: 400px; /* Maksymalna szerokość nagłówka */
 }
 
 form {
@@ -32,13 +34,38 @@ label {
     margin-bottom: 10px;
 }
 
+
+
+
+
+
+
 input[type="datetime-local"],
 select {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.select option {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.select option:checked {
+    background-color: #f0f0f0;
+    font-weight: bold;
 }
 
 button[type="submit"] {
@@ -72,15 +99,37 @@ button[type="submit"]:hover {
 }
 
 footer {
-    text-align: center;
-    margin-top: 50px;
+    text-align: center; /* Wyśrodkowanie tekstu poziomo */
+    margin: 30px auto; /* Wyśrodkowanie stopki poziomo */
     padding: 20px;
     background-color: #4CAF50;
     color: #fff;
+    border-radius: 5px;
+    max-width: 400px; /* Maksymalna szerokość stopki */
 }
+
+.footer-link {
+    display: inline-block; /* Spowoduje, że link będzie zachowywał się jak blok */
+    color: #fff; /* Kolor tekstu linków */
+    text-decoration: none; /* Usunięcie podkreślenia */
+    margin: 0 10px; /* Margines między linkami */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Podkreślenie linku po najechaniu kursorem */
+}
+
+
+
+
+
+
 
 @media screen and (max-width: 768px) {
     form {
         padding: 10px;
     }
+
+
+
 }

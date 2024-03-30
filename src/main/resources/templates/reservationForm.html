@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Formularz rezerwacji</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/reservationForm.css">
 </head>
 <body>
-<p class="center-text">Witaj, <span th:text="${firstName}"></span>!</p>
+<p class="center-text">Hello, <span th:text="${firstName}"></span>!</p>
 
 
-<h1>Umów Wizytę</h1>
+<h1>Book Visit</h1>
 
 
 <div th:if="${errorMessage}" class="error-message">
@@ -20,8 +21,8 @@
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-    <label for="serviceType">Wybierz usługę:</label>
-    <select id="serviceType" name="serviceTypeId">
+    <label for="serviceType">Select service:</label>
+    <select class="select"   id="serviceType" name="serviceTypeId">
         <option value="">Wybierz...</option>
         <option th:each="serviceType : ${serviceTypes}"
                 th:value="${serviceType.id}"
@@ -29,7 +30,7 @@
         </option>
     </select>
 
-    <label for="reservationDateTime">Data rezerwacji:</label>
+    <label for="reservationDateTime">Select Reservation Date:</label>
     <input type="datetime-local" id="reservationDateTime" name="reservationDateTime">
 
     <button type="submit">Book Reservation</button>
