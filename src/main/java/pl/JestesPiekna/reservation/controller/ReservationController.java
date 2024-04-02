@@ -13,6 +13,8 @@ import pl.JestesPiekna.model.*;
 import pl.JestesPiekna.reservation.service.ReservationService;
 import pl.JestesPiekna.serviceType.service.ServiceTypeService;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -31,7 +33,6 @@ public class ReservationController {
         this.reservationService = reservationService;
         this.serviceTypeService = serviceTypeService;
     }
-
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/addReservation")
     public String showReservationForm(Model model) {
@@ -83,11 +84,6 @@ public class ReservationController {
         }
     }
 
-
-
-
-
-
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/reservations")
     public String showReservations(Model model) {
@@ -111,7 +107,6 @@ public class ReservationController {
 
         return "reservationsView";
     }
-
 
     @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/my/reservations")
@@ -140,4 +135,5 @@ public class ReservationController {
         return "myReservationsView";
     }
 }
+
 
