@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f2f2f2;
+    padding: 90px;
+    background-color: rgba(240, 240, 240, 0.8); /* Jasnoszary kolor tła z 80% przezroczystością */
 }
 
 h1 {
@@ -15,8 +15,8 @@ table {
     width: 80%;
     margin: 20px auto;
     border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    border-radius: 10px; /* Zaokrąglenie krawędzi tabeli */
+    overflow: hidden; /* Zapobiega wyświetlaniu zawartości poza zaokrąglonymi rogami */
 }
 
 th, td {
@@ -26,22 +26,23 @@ th, td {
 }
 
 thead {
-    background-color: #333;
+    background-color: rgba(52, 73, 94, 0.8); /* Ciemnoniebieski kolor tła nagłówka tabeli z 80% przezroczystością */
     color: #fff;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: rgba(255, 255, 255, 0.5); /* Biały kolor tła dla wierszy parzystych z 50% przezroczystością */
 }
 
 footer {
-    position: static; /* lub position: relative; */
-    background-color: #333;
+    position: static;
+    background-color: rgba(52, 73, 94, 0.8); /* Ciemnoniebieski kolor tła stopki z 80% przezroczystością */
     color: #fff;
-    padding: 10px 0; /* Zmniejszyłem lewy i prawy padding, aby stopka była bardziej wycentrowana */
+    padding: 10px 0;
     text-align: center;
-    margin: 0 auto; /* Dodane centrowanie treści */
-    width: 80%; /* Ograniczenie szerokości stopki */
+    margin: 20px auto; /* Wycentrowanie stopki */
+    width: 80%;
+    border-radius: 10px; /* Zaokrąglenie krawędzi stopki */
 }
 
 footer div {
@@ -69,14 +70,19 @@ p {
         font-size: 12px;
     }
 
-
     footer {
-        position: static; /* lub position: relative; */
-        background-color: #333;
+        position: static;
+        background-color: rgba(52, 73, 94, 0.8);
         color: #fff;
-        padding: 10px 0; /* Zmniejszyłem lewy i prawy padding, aby stopka była bardziej wycentrowana */
+        padding: 10px 0;
         text-align: center;
-        margin: 0 auto; /* Dodane centrowanie treści */
-        width: 95%; /* Ograniczenie szerokości stopki */
+        margin: 20px auto; /* Wycentrowanie stopki */
+        width: 105%;
+        border-radius: 10px;
     }
+
+    body {
+        padding: 90px;
+    }
+
 }
