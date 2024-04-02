@@ -3,6 +3,7 @@ package pl.JestesPiekna.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "service_types")
@@ -56,5 +57,20 @@ public class ServiceType {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ServiceType that = (ServiceType) o;
+        return Float.compare(that.price, price) == 0 &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price);
     }
 }
