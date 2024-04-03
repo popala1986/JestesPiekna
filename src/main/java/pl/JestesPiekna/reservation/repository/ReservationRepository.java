@@ -18,12 +18,13 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     @Query("SELECT COUNT(r) > 0 FROM Reservation r WHERE r.reservation_date = :reservationDate AND r.service_type = :serviceType")
     boolean existsByReservationDateAndServiceType(@Param("reservationDate") Date reservationDate, @Param("serviceType") ServiceType serviceType);
 
-    List<Reservation> findAllByClient(User client);
-
     @Query("SELECT r FROM Reservation r WHERE r.client = :client ORDER BY r.reservation_date ASC")
     List<Reservation> findAllByClientOrderByReservationDateAsc(@Param("client") User client);
 
     @Query("SELECT r FROM Reservation r ORDER BY r.reservation_date ASC")
     List<Reservation> findAllReservationsSortedByReservationDateAsc();
+
+    @Query("SELECT COUNT(r) > 0 FROM Reservation r WHERE r.reservation_date = :reservationDate")
+    boolean existsByReservationDate(@Param("reservationDate") Date reservationDate);
 
 }

@@ -1,7 +1,5 @@
 package pl.JestesPiekna.reservation.service;
 
-
-import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -12,8 +10,6 @@ import pl.JestesPiekna.model.UserProfile;
 import pl.JestesPiekna.registration.repository.UserProfileRepository;
 import pl.JestesPiekna.registration.repository.UserRepository;
 import pl.JestesPiekna.reservation.repository.ReservationRepository;
-
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -83,10 +79,6 @@ public class ReservationService {
         }
     }
 
-    public List<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
-    }
-
     public List<Reservation> findAllReservationsSortedByReservationDateAsc() {
         return reservationRepository.findAllReservationsSortedByReservationDateAsc();
     }
@@ -94,6 +86,10 @@ public class ReservationService {
 
     public boolean existsByReservationDateAndServiceType(Date reservationDate, ServiceType serviceType) {
         return reservationRepository.existsByReservationDateAndServiceType(reservationDate, serviceType);
+    }
+
+    public boolean existsByReservationDate(Date reservationDate) {
+        return reservationRepository.existsByReservationDate(reservationDate);
     }
 
     public void saveReservation(Reservation reservation, User user) {
@@ -117,7 +113,7 @@ public class ReservationService {
     }
 
     public String getLastNameFromUserProfil(String username) {
-        // Znajdź użytkownika na podstawie nazwy użytkownika
+
         User user = userRepository.findUserByUsername(username);
 
         if (user != null) {
@@ -131,11 +127,8 @@ public class ReservationService {
         return "";
     }
 
-    public List<Reservation> getAllReservationsForUser(User user) {
-        return reservationRepository.findAllByClient(user);
-    }
-
     public List<Reservation> getAllReservationsForUserByOrderReservationDateAsc(User user) {
         return reservationRepository.findAllByClientOrderByReservationDateAsc(user);
     }
+
 }

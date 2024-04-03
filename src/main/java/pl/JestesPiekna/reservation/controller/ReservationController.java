@@ -49,35 +49,48 @@ public class ReservationController {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/submitReservation")
-    public String submitReservation(@RequestParam("serviceTypeId") Integer serviceTypeId,
-                                    @RequestParam("reservationDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date reservationDateTime,
+    public String submitReservation(@RequestParam(value = "serviceTypeId", required = false) Integer serviceTypeId,
+                                    @RequestParam("reservationDate") String reservationDate,
+                                    @RequestParam("reservationTime") String reservationTime,
                                     Model model,
                                     Authentication authentication) {
 
-
+        if (serviceTypeId == null) {
+            model.addAttribute("errorMessage", "Proszę wybrać rodzaj usługi.");
+            model.addAttribute("serviceTypes", serviceTypeService.getAllServiceTypes());
+            return "reservationForm"; // Zwrócenie widoku formularza z błędem
+        }
         User client = reservationService.getLoggedInUser();
-
-
         ServiceType serviceType = serviceTypeService.getServiceTypeById(serviceTypeId);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        Reservation reservation = new Reservation();
-        reservation.setService_type(serviceType);
-        reservation.setReservation_date(reservationDateTime);
+        try {
 
-
-        reservation.setClient(client);
+            String dateTimeStr = reservationDate + " " + reservationTime;
 
 
-        if (!reservationService.existsByReservationDateAndServiceType(reservationDateTime, serviceType)) {
-
-            reservationService.saveReservation(reservation,client);
+            Date reservationDateTime = sdf.parse(dateTimeStr);
 
 
-            return "confirmedReservation";
-        } else {
+            Reservation reservation = new Reservation();
+            reservation.setService_type(serviceType);
+            reservation.setReservation_date(reservationDateTime);
+            reservation.setClient(client);
 
-            model.addAttribute("errorMessage", "Wybrana data jest już zarezerwowana dla wybranej usługi. Proszę wybrać inną datę lub inną usługę.");
+            if (!reservationService.existsByReservationDate(reservationDateTime)) {
+                reservationService.saveReservation(reservation, client);
+                return "confirmedReservation";
+            } else {
+                model.addAttribute("errorMessage", "Wybrana godzina wizyty jest już zarezerwowana. Proszę wybrać inną godzinę.");
+                model.addAttribute("serviceTypes", serviceTypeService.getAllServiceTypes());
+                model.addAttribute("selectedServiceTypeId", serviceTypeId);
+                return "reservationForm";
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            // Obsługa błędu parsowania daty i godziny
+            model.addAttribute("errorMessage", "Wystąpił błąd podczas przetwarzania daty i godziny rezerwacji.");
             model.addAttribute("serviceTypes", serviceTypeService.getAllServiceTypes());
             model.addAttribute("selectedServiceTypeId", serviceTypeId);
             return "reservationForm";
