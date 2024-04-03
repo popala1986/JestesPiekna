@@ -9,9 +9,7 @@
 <body>
 <p class="center-text">Hello, <span th:text="${firstName}"></span>!</p>
 
-
 <h1>Book Visit</h1>
-
 
 <div th:if="${errorMessage}" class="error-message">
     <p th:text="${errorMessage}"></p>
@@ -22,7 +20,7 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
     <label for="serviceType">Select service:</label>
-    <select class="select"   id="serviceType" name="serviceTypeId">
+    <select class="select" id="serviceType" name="serviceTypeId">
         <option value="">Wybierz...</option>
         <option th:each="serviceType : ${serviceTypes}"
                 th:value="${serviceType.id}"
@@ -30,8 +28,15 @@
         </option>
     </select>
 
-    <label for="reservationDateTime">Select Reservation Date:</label>
-    <input type="datetime-local" id="reservationDateTime" name="reservationDateTime">
+    <label class="labelReservationDate" for="reservationDate">Select Reservation Date:</label>
+    <input class="inputReservationDate" type="date" id="reservationDate" name="reservationDate" min="2024-04-02" max="2024-12-31">
+
+    <label class="labelReservationTime" for="reservationTime">Select Reservation Time:</label>
+    <select class="selectReservationTime" id="reservationTime" name="reservationTime">
+        <option value="09:00">09:00</option>
+        <option value="12:00">12:00</option>
+        <option value="15:00">15:00</option>
+    </select>
 
     <button type="submit">Book Reservation</button>
 </form>
@@ -48,6 +53,5 @@
     </div>
 
 </footer>
-
 
 </html>
