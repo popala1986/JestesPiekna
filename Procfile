@@ -1,1 +1,1 @@
-web: java -jar JP.jar
+web: java -jar JP-0.0.1-SNAPSHOT.jar
