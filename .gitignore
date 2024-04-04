@@ -1,7 +1,11 @@
-HELP.md
+# Ignorowanie katalogu target, ale zezwalanie na maven-wrapper.jar
 target/
 !.mvn/wrapper/maven-wrapper.jar
+
+# Zezwolenie na katalog target w src/main
 !**/src/main/**/target/
+
+# Zezwolenie na katalog target w src/test
 !**/src/test/**/target/
 
 ### STS ###
@@ -35,3 +39,6 @@ src/main/resources/application.properties
 
 # Ignorowanie raportów testów Surefire
 target/surefire-reports/
+
+# Ignorowanie pliku HELP.md
+HELP.md
