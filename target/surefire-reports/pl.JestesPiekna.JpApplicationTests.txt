@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pl.JestesPiekna.JpApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.687 s -- in pl.JestesPiekna.JpApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.661 s -- in pl.JestesPiekna.JpApplicationTests
