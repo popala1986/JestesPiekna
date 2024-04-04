@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/login.css">
+</head>
+<body>
+
+
+<div class="login-container">
+  <h1>Login</h1>
+
+  <form th:action="@{/login}" th:object="${loginDto}" method="post">
+
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" th:field="*{username}" required placeholder="Enter username" class="name" autocomplete="off"/>
+      <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></div>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" th:field="*{password}" required placeholder="Enter password" class="password" autocomplete="off"/>
+      <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
+    </div>
+
+    <div class="form-buttons">
+      <button class="login-button""" type="submit">Login</button>
+      <a th:href="@{/registration}" class="signup-button">Sign up</a>
+    </div>
+
+    <div>
+      <a th:href="@{/YouAreBeautiful}">Home</a>
+    </div>
+
+  </form>
+
+</div>
+
+</div>
+
+
+
+
+</body>
+</html>
+
+

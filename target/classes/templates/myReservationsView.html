@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista Rezerwacji</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/myReservationView.css">
+</head>
+
+
+
+<body>
+
+
+<h1>Moje wizyty</h1>
+
+<p class="center-text">Witaj, <span th:text="${firstName}"></span> <span th:text="${lastName}"></span>!</p>
+
+<div class="table">
+
+  <table border="1">
+    <thead>
+    <tr>
+
+<!--      <th>Imię</th>-->
+<!--      <th>Nazwisko</th>-->
+      <th>Typ Usługi</th>
+      <th>Data Rezerwacji</th>
+      <th>Godzina Rezerwacji</th>
+    </tr>
+    </thead>
+
+    <div>
+
+      <tr th:each="reservation : ${reservations}">
+
+<!--        <td th:text="${firstName}"></td>-->
+<!--        <td th:text="${lastName}"></td>-->
+        <td th:text="${reservation.service_type.name}"></td>
+        <td th:text="${#dates.format(reservation.reservation_date, 'yyyy-MM-dd')}"></td>
+        <td th:text="${#dates.format(reservation.reservation_date, 'HH:mm')}"></td>
+      </tr>
+
+    </div>
+
+  </table>
+
+
+</div>
+
+
+
+<footer>
+
+  <div th:if="${#authorization.expression('isAuthenticated()')}">
+    <a th:href="@{/homePage}">Strona główna</a>
+  </div>
+  <div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <a th:href="@{/YouAreBeautiful}">Strona główna</a>
+  </div>
+
+</footer>
+
+</body>
+</html>
+

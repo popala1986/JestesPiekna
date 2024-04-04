@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz rezerwacji</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/reservationForm.css">
+</head>
+<body>
+<p class="center-text">Hello, <span th:text="${firstName}"></span>!</p>
+
+<h1>Book Visit</h1>
+
+<div th:if="${errorMessage}" class="error-message">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<form action="/submitReservation" method="post">
+
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+    <label for="serviceType">Select service:</label>
+    <select class="select" id="serviceType" name="serviceTypeId">
+        <option value="">Wybierz...</option>
+        <option th:each="serviceType : ${serviceTypes}"
+                th:value="${serviceType.id}"
+                th:text="${serviceType.name + ' - ' + serviceType.price + ' PLN'}">
+        </option>
+    </select>
+
+    <label class="labelReservationDate" for="reservationDate">Select Reservation Date:</label>
+    <input class="inputReservationDate" type="date" id="reservationDate" name="reservationDate" min="2024-04-02" max="2024-12-31">
+
+    <label class="labelReservationTime" for="reservationTime">Select Reservation Time:</label>
+    <select class="selectReservationTime" id="reservationTime" name="reservationTime">
+        <option value="09:00">09:00</option>
+        <option value="12:00">12:00</option>
+        <option value="15:00">15:00</option>
+    </select>
+
+    <button type="submit">Book Reservation</button>
+</form>
+
+</body>
+
+<footer>
+
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <a th:href="@{/homePage}">Home</a>
+    </div>
+    <div th:unless="${#authorization.expression('isAuthenticated()')}">
+        <a th:href="@{/YouAreBeautiful}">Home</a>
+    </div>
+
+</footer>
+
+</html>

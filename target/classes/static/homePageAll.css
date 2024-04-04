@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+ul,
+ol,
+li,
+form,
+label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Roboto Slab', serif;
+    background-color: #f8f8f8;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 4px;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+     .NAME p {
+            margin-right: 49px;
+        }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    nav ul li {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul li.login-item {
+        margin-left: 0;
+    }
+
+    nav ul li:last-child {
+        margin-left: 20px;
+    }
+
+    nav ul li:last-child a {
+        padding: 10px;
+    }
+
+    .LOGO img {
+        max-width: 100%;
+    }
+
+    .btnMenu {
+        display: block;
+    }
+
+    .menuContent {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        border: 1px solid #fff;
+        width: 150px;
+        z-index: 1;
+    }
+
+    .btnMenu:hover .menuContent {
+        display: flex;
+    }
+
+    .menuContent a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .menuContent a:hover {
+        background-color: #555;
+    }
+}
+
+
+header .NAME {
+    flex-grow: 1;
+    text-align: center;
+    margin-left: 30%;
+}
+
+.NAME {
+    text-align: center;
+    flex-grow: 1;
+    margin-left: 20%;
+}
+
+.blinking-text {
+    font-size: 28px;
+    animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+    0% { color: #e0c30b; }
+    50% { color: transparent; }
+    100% { color: #e0c30b; }
+}
+
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li a:hover {
+    color: #e0c30b;
+}
+
+
+.login-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+.login-icon i {
+    color: #fff;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+
+main {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.SECTION {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.S1,
+.S3,
+.S4 {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    font-family: 'Roboto Slab', serif;
+}
+
+.S4:last-child {
+    border-bottom: none;
+}
+
+.S3 h2 {
+
+    margin: 10px;
+}
+
+
+.LOGO img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+.OWNER h1 {
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+}
+
+
+.slide-in-text {
+    animation: slideIn 2s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        margin-top: -50px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+
+
+.S3 p {
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+}
+
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.photo-gallery img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.S4 .photo-gallery img {
+    width: 350px;
+    height: 350px;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 4px;
+}

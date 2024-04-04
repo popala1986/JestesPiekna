@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/registrationForm.css">
+</head>
+<body>
+<div class="registration-container">
+  <h1>Registration Form</h1>
+
+  <form th:action="@{/registration}" th:object="${registerUserDto}" method="post">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" th:field="*{username}" required placeholder="Enter username" class="name" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
+    </div>
+
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" th:field="*{password}" required placeholder="Enter password" class="password" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" id="email" th:field="*{email}" placeholder="Enter email" class="email" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
+    </div>
+
+
+    <div>
+      <label for="name">FirstName:</label>
+      <input type="text" id="name" th:field="*{firstName}" required placeholder="Enter firstName" class="firstName" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
+    </div>
+
+    <div>
+      <label for="surname">LastName:</label>
+      <input type="text" id="surname" th:field="*{lastName}" required placeholder="Enter lastName" class="lastName" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></span>
+    </div>
+
+    <div>
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" th:field="*{phone}" placeholder="Enter phone" class="phone" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="error"></span>
+    </div>
+
+    <div>
+      <label for="health_conditions">Health Conditions:</label>
+      <input type="text" id="health_conditions" th:field="*{healthCondition}" placeholder="Enter health conditions" class="health-conditions" autocomplete="off"/>
+      <span th:if="${#fields.hasErrors('healthCondition')}" th:errors="*{healthCondition}" class="error"></span>
+    </div>
+
+    <div>
+      <button type="submit">Register</button>
+    </div>
+  </form>
+
+  <div>
+    <a th:href="@{/YouAreBeautiful}">Home</a>
+  </div>
+
+  <div th:if="${error}">
+    <p style="color: red;" th:text="${error}"></p>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

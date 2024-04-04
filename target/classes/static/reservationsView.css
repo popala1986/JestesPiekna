@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 90px;
+    background-color: rgba(240, 240, 240, 0.8); /* Jasnoszary kolor tła z 80% przezroczystością */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 10px; /* Zaokrąglenie krawędzi tabeli */
+    overflow: hidden; /* Zapobiega wyświetlaniu zawartości poza zaokrąglonymi rogami */
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+thead {
+    background-color: rgba(52, 73, 94, 0.8); /* Ciemnoniebieski kolor tła nagłówka tabeli z 80% przezroczystością */
+    color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.5); /* Biały kolor tła dla wierszy parzystych z 50% przezroczystością */
+}
+
+footer {
+    position: static;
+    background-color: rgba(52, 73, 94, 0.8); /* Ciemnoniebieski kolor tła stopki z 80% przezroczystością */
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    margin: 20px auto; /* Wycentrowanie stopki */
+    width: 80%;
+    border-radius: 10px; /* Zaokrąglenie krawędzi stopki */
+}
+
+footer div {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #e0c30b;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+
+    footer {
+        position: static;
+        background-color: rgba(52, 73, 94, 0.8);
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        margin: 20px auto; /* Wycentrowanie stopki */
+        width: 105%;
+        border-radius: 10px;
+    }
+
+    body {
+        padding: 90px;
+    }
+
+}
