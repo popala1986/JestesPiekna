@@ -35,7 +35,7 @@ build/
 
 ### VS Code ###
 .vscode/
-src/main/resources/application.properties
+
 
 # Ignorowanie raportów testów Surefire
 target/surefire-reports/
