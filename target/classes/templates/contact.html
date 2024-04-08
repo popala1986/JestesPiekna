@@ -23,7 +23,7 @@
         <a th:href="@{/homePage}">Home</a>
     </div>
     <div th:unless="${#authorization.expression('isAuthenticated()')}">
-        <a th:href="@{/YouAreBeautiful}">Home</a>
+        <a th:href="@{/}">Home</a>
     </div>
 
 </div>
