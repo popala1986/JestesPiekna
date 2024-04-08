@@ -135,7 +135,7 @@ public class SecurityConfig {
                 )
                 .authorizeRequests(authorize -> authorize
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("/YouAreBeautiful").permitAll()
+                        .requestMatchers("/").permitAll()
                         .requestMatchers(HttpMethod.GET, "/homePage").authenticated()
                         .requestMatchers(HttpMethod.GET, "/my/reservations").authenticated()
                         .requestMatchers(HttpMethod.GET, "/submitReservation").authenticated()
@@ -152,7 +152,7 @@ public class SecurityConfig {
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID", "CSRF-TOKEN", "XSRF-TOKEN")
                         .clearAuthentication(true)
-                        .logoutSuccessUrl("/YouAreBeautiful")
+                        .logoutSuccessUrl("/")
                 )
                 .authenticationManager(authenticationManager);
 
