@@ -23,7 +23,7 @@ public class HomePageController {
     }
 
 
-    @GetMapping("/")
+    @GetMapping("/YouAreBeautiful")
     public String showHomePageAll(Model model) {
         List<PhotoGallery> latestPhotos  = photoGalleryService.getLatestPhotos();
         model.addAttribute("latestPhotos", latestPhotos);
