@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 90px;
-    background-color: rgba(240, 240, 240, 0.8); /* Jasnoszary kolor tła z 80% przezroczystością */
+    background-color: rgba(240, 240, 240, 0.8);
 }
 
 h1 {
@@ -15,8 +15,8 @@ table {
     width: 80%;
     margin: 20px auto;
     border-collapse: collapse;
-    border-radius: 10px; /* Zaokrąglenie krawędzi tabeli */
-    overflow: hidden; /* Zapobiega wyświetlaniu zawartości poza zaokrąglonymi rogami */
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 th, td {
@@ -26,23 +26,23 @@ th, td {
 }
 
 thead {
-    background-color: rgba(52, 73, 94, 0.8); /* Ciemnoniebieski kolor tła nagłówka tabeli z 80% przezroczystością */
+    background-color: rgba(52, 73, 94, 0.8);
     color: #fff;
 }
 
 tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.5); /* Biały kolor tła dla wierszy parzystych z 50% przezroczystością */
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 footer {
     position: static;
-    background-color: rgba(52, 73, 94, 0.8); /* Ciemnoniebieski kolor tła stopki z 80% przezroczystością */
+    background-color: rgba(52, 73, 94, 0.8);
     color: #fff;
     padding: 10px 0;
     text-align: center;
-    margin: 20px auto; /* Wycentrowanie stopki */
+    margin: 20px auto;
     width: 80%;
-    border-radius: 10px; /* Zaokrąglenie krawędzi stopki */
+    border-radius: 10px;
 }
 
 footer div {
@@ -68,21 +68,16 @@ p {
     table {
         margin-top: 10px;
         font-size: 12px;
+        width: 100%;
     }
 
     footer {
-        position: static;
-        background-color: rgba(52, 73, 94, 0.8);
-        color: #fff;
-        padding: 10px 0;
-        text-align: center;
-        margin: 20px auto; /* Wycentrowanie stopki */
-        width: 105%;
-        border-radius: 10px;
+        width: 100%; /
     }
 
     body {
-        padding: 90px;
+        padding: 20px;
+        width: 90%;
+        margin: 0;
     }
-
 }
