@@ -59,7 +59,7 @@ header {
     }
 
      .NAME p {
-            margin-right: 50px;
+            margin-right: 67px;
         }
 
     nav ul {
@@ -128,13 +128,13 @@ header {
 header .NAME {
     flex-grow: 1;
     text-align: center;
-    margin-left: 30%;
+    margin-left: 29%;
 }
 
 .NAME {
     text-align: center;
     flex-grow: 1;
-    margin-left: 19%;
+    margin-left: 20%;
 }
 
 .blinking-text {
