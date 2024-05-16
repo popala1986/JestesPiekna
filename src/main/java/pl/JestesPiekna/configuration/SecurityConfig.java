@@ -49,11 +49,6 @@ public class SecurityConfig {
 
     private final AuthoritiesRepository authoritiesRepository;
 
-    @Value("${default.admin.password}")
-    private String defaultAdminPassword;
-
-    @Value("${default.admin.username}")
-    private String defaultAdminUsername;
 
     public SecurityConfig(UserRepository userRepository, AuthoritiesRepository authoritiesRepository) {
         this.userRepository = userRepository;
@@ -81,8 +76,8 @@ public class SecurityConfig {
 
         if (existingAdmin.isEmpty()) {
             User adminEntity = new User();
-            adminEntity.setUsername(defaultAdminUsername);
-            adminEntity.setPassword(bCryptPasswordEncoder().encode(defaultAdminPassword));
+            adminEntity.setUsername("admin");
+            adminEntity.setPassword(bCryptPasswordEncoder().encode("Password10!"));
             adminEntity.setEmail("pawel@wp.pl");
             adminEntity.setEnabled(1);
 
