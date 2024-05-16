@@ -1,6 +1,7 @@
 package pl.JestesPiekna.configuration;
 
 import jakarta.servlet.http.HttpSessionEvent;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -48,6 +49,12 @@ public class SecurityConfig {
 
     private final AuthoritiesRepository authoritiesRepository;
 
+    @Value("${default.admin.password}")
+    private String defaultAdminPassword;
+
+    @Value("${default.admin.username}")
+    private String defaultAdminUsername;
+
     public SecurityConfig(UserRepository userRepository, AuthoritiesRepository authoritiesRepository) {
         this.userRepository = userRepository;
         this.authoritiesRepository = authoritiesRepository;
@@ -74,8 +81,8 @@ public class SecurityConfig {
 
         if (existingAdmin.isEmpty()) {
             User adminEntity = new User();
-            adminEntity.setUsername("admin");
-            adminEntity.setPassword(bCryptPasswordEncoder().encode("Password10!"));
+            adminEntity.setUsername(defaultAdminUsername);
+            adminEntity.setPassword(bCryptPasswordEncoder().encode(defaultAdminPassword));
             adminEntity.setEmail("pawel@wp.pl");
             adminEntity.setEnabled(1);
 
