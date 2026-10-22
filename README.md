@@ -1,6 +1,6 @@
 💄 You Are Beautiful
 
- is a web application built with Spring Boot that showcases beauty, hairdressing, and wellness services. Users can browse offers by category, location, and availability, and explore service providers and their portfolios.
+ You Are Beautifulis a web application built with Spring Boot that showcases beauty, hairdressing, and wellness services. Users can browse offers by category, location, and availability, and explore service providers and their portfolios.
 
 📦 Technologies Used
 Java 17
